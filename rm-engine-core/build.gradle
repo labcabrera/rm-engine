@@ -1,5 +1,6 @@
 dependencies {
-  compile 'org.mongodb:mongo-java-driver:3.1.1'
-  compile 'joda-time:joda-time:2.9.1'
-  compile 'com.google.code.gson:gson:2.4'
+	compile project(":rm-engine-model")
+	compile 'org.mongodb:mongo-java-driver:3.1.1'
+	compile 'joda-time:joda-time:2.9.1'
+	compile 'com.google.code.gson:gson:2.4'
 }

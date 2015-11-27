@@ -1,18 +1,30 @@
 package org.lab.rm.engine.model;
 
+import java.util.List;
+
+import org.lab.rm.engine.model.common.User;
+
 public class Character {
 
 	private Long id;
+
+	private User owner;
 
 	private String name;
 
 	private Integer level;
 
+	private Gender gender;
+
 	private CharacterClass characterClass;
 
 	private CharacterClass characterRace;
 
+	private CharacterAttributes attributes;
+
 	private Integer maxHitPoints;
+
+	private List<CharacterSkill> skills;
 
 	public Long getId() {
 		return id;
@@ -20,6 +32,14 @@ public class Character {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public User getOwner() {
+		return owner;
+	}
+
+	public void setOwner(User owner) {
+		this.owner = owner;
 	}
 
 	public String getName() {
