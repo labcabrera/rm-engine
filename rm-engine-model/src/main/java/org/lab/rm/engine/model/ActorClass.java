@@ -1,6 +1,6 @@
 package org.lab.rm.engine.model;
 
-public enum CharacterClass {
+public enum ActorClass {
 
 	FIGHTER,
 

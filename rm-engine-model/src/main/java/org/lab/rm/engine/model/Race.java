@@ -1,6 +1,6 @@
 package org.lab.rm.engine.model;
 
-public enum CharacterRace {
+public enum Race {
 
 	COMMON_MAN,
 

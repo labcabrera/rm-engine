@@ -1,16 +1,16 @@
 package org.lab.rm.engine.model;
 
-public class CharacterStatus {
+public class ActorStatus {
 
-	private Character character;
+	private Actor character;
 
 	private Integer currentHitPoints;
 
-	public Character getCharacter() {
+	public Actor getCharacter() {
 		return character;
 	}
 
-	public void setCharacter(Character character) {
+	public void setCharacter(Actor character) {
 		this.character = character;
 	}
 

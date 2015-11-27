@@ -1,6 +1,6 @@
 package org.lab.rm.engine.model;
 
-public class CharacterSkill {
+public class ActorSkill {
 
 	private Skill skill;
 
