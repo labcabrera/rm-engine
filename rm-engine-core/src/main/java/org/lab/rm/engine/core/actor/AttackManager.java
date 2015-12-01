@@ -1,4 +1,4 @@
-package org.lab.rm.engine.core.character;
+package org.lab.rm.engine.core.actor;
 
 import org.lab.rm.engine.model.ActorStatus;
 import org.lab.rm.engine.model.actions.AttackOptions;
