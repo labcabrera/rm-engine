@@ -11,16 +11,16 @@ import com.mongodb.client.MongoDatabase;
 public class MongoDatabaseProvider implements Provider<MongoDatabase> {
 
 	private final ThreadLocal<MongoDatabase> threadLocal;
+	private final MongoClient mongoClient;
 
 	public MongoDatabaseProvider() {
 		threadLocal = new ThreadLocal<>();
+		mongoClient = new MongoClient(new MongoClientURI("mongodb://localhost:27017"));
 	}
 
 	@Override
-	@SuppressWarnings("resource")
 	public MongoDatabase get() {
 		if (threadLocal.get() == null) {
-			MongoClient mongoClient = new MongoClient(new MongoClientURI("mongodb://localhost:27017"));
 			MongoDatabase dataBase = mongoClient.getDatabase("rm-engine");
 			threadLocal.set(dataBase);
 		}
