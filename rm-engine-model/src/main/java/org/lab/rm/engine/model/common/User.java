@@ -1,8 +1,10 @@
 package org.lab.rm.engine.model.common;
 
+import org.bson.types.ObjectId;
+
 public class User {
 
-	private String id;
+	private ObjectId id;
 
 	private String name;
 
@@ -10,11 +12,24 @@ public class User {
 
 	private String passwordDigest;
 
-	public String getId() {
+	public User() {
+	}
+
+	public User(String name, String email) {
+		this.name = name;
+		this.email = email;
+	}
+
+	public User withNewObjectId() {
+		setId(new ObjectId());
+		return this;
+	}
+
+	public ObjectId getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(ObjectId id) {
 		this.id = id;
 	}
 

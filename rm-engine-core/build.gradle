@@ -1,8 +1,8 @@
 dependencies {
 	compile project(":rm-engine-model")
-	compile 'org.mongodb:mongo-java-driver:3.1.1'
 	compile 'joda-time:joda-time:2.9.1'
 	compile 'com.google.code.gson:gson:2.5'
 	compile 'com.google.inject:guice:4.0'
+	compile 'org.apache.commons:commons-lang3:3.4'
 	testCompile 'junit:junit:4.12'
 }

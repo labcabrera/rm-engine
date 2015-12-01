@@ -1,4 +1,4 @@
-package org.lab.rm.engine.actor;
+package org.lab.rm.engine.test;
 
 import org.junit.Test;
 import org.lab.rm.engine.core.actor.ActorEntityService;
