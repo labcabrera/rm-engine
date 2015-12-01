@@ -2,6 +2,7 @@ package org.lab.rm.engine.test;
 
 import org.junit.Test;
 import org.lab.rm.engine.core.actor.ActorEntityService;
+import org.lab.rm.engine.core.entities.UserEntityService;
 import org.lab.rm.engine.core.guice.RmEngineModule;
 import org.lab.rm.engine.model.Actor;
 import org.lab.rm.engine.model.ActorAttributes;
@@ -16,10 +17,11 @@ public class ActorGeneratorTest {
 	@Test
 	public void test() {
 		Injector injector = Guice.createInjector(new RmEngineModule());
-		
+
+		UserEntityService entityService = injector.getInstance(UserEntityService.class);
 		ActorEntityService actorEntityService = injector.getInstance(ActorEntityService.class);
 
-		User user = new User();
+		User user = entityService.findByName("lab.cabrera");
 		user.setName("labcabrera");
 		user.setEmail("lab.cabrera@gmail.com");
 

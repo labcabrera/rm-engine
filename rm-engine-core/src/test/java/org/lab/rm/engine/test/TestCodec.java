@@ -27,7 +27,7 @@ public class TestCodec {
 		MongoClient mc = new MongoClient("localhost:27017", options);
 		MongoCollection<User> collection = mc.getDatabase("rm-engine").getCollection("user", User.class);
 
-		collection.insertOne(new User("lab.cabrera", "lab.cabrera@gmail.com"));
+		collection.insertOne(new User("marcel.crow", "marcel.crow@gmail.com"));
 		collection.insertOne(new User("jdoe", "john.doe@gmail.com"));
 
 		User first = collection.find(User.class).first();
