@@ -2,9 +2,15 @@ package org.lab.rm.engine.core.mongodb;
 
 import javax.inject.Provider;
 
+import org.bson.Document;
+import org.bson.codecs.Codec;
+import org.bson.codecs.configuration.CodecRegistries;
+import org.bson.codecs.configuration.CodecRegistry;
+import org.lab.rm.engine.core.mongodb.codecs.UserCodec;
+
 import com.google.inject.Singleton;
 import com.mongodb.MongoClient;
-import com.mongodb.MongoClientURI;
+import com.mongodb.MongoClientOptions;
 import com.mongodb.client.MongoDatabase;
 
 @Singleton
@@ -13,9 +19,14 @@ public class MongoDatabaseProvider implements Provider<MongoDatabase> {
 	private final ThreadLocal<MongoDatabase> threadLocal;
 	private final MongoClient mongoClient;
 
+	// TODO parametrizar cadena de conexion a mongodb
 	public MongoDatabaseProvider() {
 		threadLocal = new ThreadLocal<>();
-		mongoClient = new MongoClient(new MongoClientURI("mongodb://localhost:27017"));
+		Codec<Document> defaultDocumentCodec = MongoClient.getDefaultCodecRegistry().get(Document.class);
+		UserCodec gradeCodec = new UserCodec(defaultDocumentCodec);
+		CodecRegistry codecRegistry = CodecRegistries.fromRegistries(MongoClient.getDefaultCodecRegistry(), CodecRegistries.fromCodecs(gradeCodec));
+		MongoClientOptions options = MongoClientOptions.builder().codecRegistry(codecRegistry).build();
+		mongoClient = new MongoClient("localhost:27017", options);
 	}
 
 	@Override

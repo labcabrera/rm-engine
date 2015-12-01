@@ -1,7 +1,5 @@
 package org.lab.rm.engine.test;
 
-import java.util.Iterator;
-
 import org.bson.BsonDocument;
 import org.bson.Document;
 import org.bson.codecs.Codec;
@@ -24,6 +22,7 @@ public class TestCodec {
 		Codec<Document> defaultDocumentCodec = MongoClient.getDefaultCodecRegistry().get(Document.class);
 		UserCodec gradeCodec = new UserCodec(defaultDocumentCodec);
 		CodecRegistry codecRegistry = CodecRegistries.fromRegistries(MongoClient.getDefaultCodecRegistry(), CodecRegistries.fromCodecs(gradeCodec));
+
 		MongoClientOptions options = MongoClientOptions.builder().codecRegistry(codecRegistry).build();
 		MongoClient mc = new MongoClient("localhost:27017", options);
 		MongoCollection<User> collection = mc.getDatabase("rm-engine").getCollection("user", User.class);
