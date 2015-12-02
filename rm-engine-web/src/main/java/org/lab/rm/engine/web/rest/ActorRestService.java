@@ -12,7 +12,7 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
 import org.lab.rm.engine.core.actor.ActorEntityService;
-import org.lab.rm.engine.model.Actor;
+import org.lab.rm.engine.model.actor.Actor;
 import org.lab.rm.engine.model.common.Message;
 import org.lab.rm.engine.model.common.SearchResults;
 

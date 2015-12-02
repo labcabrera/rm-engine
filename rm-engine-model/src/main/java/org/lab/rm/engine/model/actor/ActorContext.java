@@ -1,4 +1,4 @@
-package org.lab.rm.engine.model;
+package org.lab.rm.engine.model.actor;
 
 import org.bson.types.ObjectId;
 

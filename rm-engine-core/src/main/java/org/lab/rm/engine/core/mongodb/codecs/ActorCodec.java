@@ -6,7 +6,7 @@ import org.bson.Document;
 import org.bson.codecs.Codec;
 import org.bson.codecs.DecoderContext;
 import org.bson.codecs.EncoderContext;
-import org.lab.rm.engine.model.Actor;
+import org.lab.rm.engine.model.actor.Actor;
 
 public class ActorCodec extends AbstractCodec<Actor> {
 

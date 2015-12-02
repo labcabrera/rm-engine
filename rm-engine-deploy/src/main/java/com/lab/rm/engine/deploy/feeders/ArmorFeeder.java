@@ -1,7 +1,7 @@
 package com.lab.rm.engine.deploy.feeders;
 
 import org.bson.Document;
-import org.lab.rm.engine.model.ArmorType;
+import org.lab.rm.engine.model.items.ArmorType;
 
 import com.mongodb.client.MongoCollection;
 

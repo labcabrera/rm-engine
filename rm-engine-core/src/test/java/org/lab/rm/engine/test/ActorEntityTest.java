@@ -7,12 +7,12 @@ import org.lab.rm.engine.core.actor.ActorEntityService;
 import org.lab.rm.engine.core.entities.UserEntityService;
 import org.lab.rm.engine.core.guice.RmEngineModule;
 import org.lab.rm.engine.core.guice.serialization.Serializer;
-import org.lab.rm.engine.model.Actor;
-import org.lab.rm.engine.model.ActorAttribute;
-import org.lab.rm.engine.model.ActorClass;
-import org.lab.rm.engine.model.AttributeType;
-import org.lab.rm.engine.model.Gender;
-import org.lab.rm.engine.model.Race;
+import org.lab.rm.engine.model.actor.Actor;
+import org.lab.rm.engine.model.actor.ActorAttribute;
+import org.lab.rm.engine.model.actor.ActorClass;
+import org.lab.rm.engine.model.actor.AttributeType;
+import org.lab.rm.engine.model.actor.Gender;
+import org.lab.rm.engine.model.actor.Race;
 import org.lab.rm.engine.model.common.Message;
 import org.lab.rm.engine.model.user.User;
 

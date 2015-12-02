@@ -1,4 +1,4 @@
-package org.lab.rm.engine.model;
+package org.lab.rm.engine.model.actor;
 
 public class Skill {
 

@@ -1,6 +1,6 @@
-package org.lab.rm.engine.model;
+package org.lab.rm.engine.model.items;
 
-public class Weapon extends Item {
+public class WeaponType extends Item {
 
 	private String name;
 

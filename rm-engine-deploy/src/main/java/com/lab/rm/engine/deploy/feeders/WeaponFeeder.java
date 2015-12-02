@@ -1,7 +1,7 @@
 package com.lab.rm.engine.deploy.feeders;
 
 import org.bson.Document;
-import org.lab.rm.engine.model.Weapon;
+import org.lab.rm.engine.model.items.WeaponType;
 
 import com.mongodb.client.MongoCollection;
 
@@ -21,7 +21,7 @@ public class WeaponFeeder extends CsvFeeder {
 
 	@Override
 	protected void processRow(DataSet dataSet, MongoCollection<Document> collection) {
-		Weapon entity = new Weapon();
+		WeaponType entity = new WeaponType();
 		entity.setName(dataSet.getString("NAME"));
 		collection.insertOne(Document.parse(serializer.toJson(entity)));
 	}

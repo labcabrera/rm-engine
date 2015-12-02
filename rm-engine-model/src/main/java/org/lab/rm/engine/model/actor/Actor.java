@@ -1,9 +1,10 @@
-package org.lab.rm.engine.model;
+package org.lab.rm.engine.model.actor;
 
 import java.math.BigDecimal;
 import java.util.List;
 
 import org.bson.types.ObjectId;
+import org.lab.rm.engine.model.HasId;
 import org.lab.rm.engine.model.user.User;
 
 public class Actor implements HasId {

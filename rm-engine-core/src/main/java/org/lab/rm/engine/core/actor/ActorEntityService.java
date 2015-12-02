@@ -6,7 +6,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.bson.BsonDocument;
 import org.bson.Document;
 import org.lab.rm.engine.core.entities.MongoEntityService;
-import org.lab.rm.engine.model.Actor;
+import org.lab.rm.engine.model.actor.Actor;
 import org.lab.rm.engine.model.common.SearchResults;
 
 import com.mongodb.Block;

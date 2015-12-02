@@ -1,6 +1,10 @@
-package org.lab.rm.engine.model;
+package org.lab.rm.engine.model.actor;
 
 import java.util.List;
+
+import org.lab.rm.engine.model.items.ArmorType;
+import org.lab.rm.engine.model.items.Coin;
+import org.lab.rm.engine.model.items.Item;
 
 public class ActorInventory {
 

@@ -2,6 +2,8 @@ package org.lab.rm.engine.model;
 
 import java.util.Map;
 
+import org.lab.rm.engine.model.items.ArmorType;
+
 public class CritTable {
 
 	private CritType type;
