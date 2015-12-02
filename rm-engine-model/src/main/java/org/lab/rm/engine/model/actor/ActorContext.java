@@ -1,27 +1,45 @@
 package org.lab.rm.engine.model.actor;
 
 import org.bson.types.ObjectId;
+import org.mongodb.morphia.annotations.Entity;
+import org.mongodb.morphia.annotations.Id;
+import org.mongodb.morphia.annotations.Reference;
 
-import com.mongodb.DBRef;
-
+@Entity("actorContext")
 public class ActorContext {
 
-	private ObjectId _id;
+	@Id
+	private ObjectId id;
 
-	private DBRef character;
+	@Reference
+	private Actor actor;
+
+	private Inventory inventory;
 
 	private Integer currentHitPoints;
 
 	public ObjectId getId() {
-		return _id;
+		return id;
 	}
 
-	public DBRef getCharacter() {
-		return character;
+	public void setId(ObjectId id) {
+		this.id = id;
 	}
 
-	public void setCharacter(DBRef character) {
-		this.character = character;
+	public Actor getActor() {
+		return actor;
+	}
+
+	public void setActor(Actor actor) {
+		this.actor = actor;
+	}
+
+	public Inventory getInventory() {
+		return inventory;
+	}
+
+	public void setInventory(Inventory inventory) {
+		this.inventory = inventory;
 	}
 
 	public Integer getCurrentHitPoints() {
@@ -31,4 +49,5 @@ public class ActorContext {
 	public void setCurrentHitPoints(Integer currentHitPoints) {
 		this.currentHitPoints = currentHitPoints;
 	}
+
 }

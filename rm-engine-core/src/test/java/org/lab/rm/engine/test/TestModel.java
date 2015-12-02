@@ -10,16 +10,21 @@ import org.lab.rm.engine.model.Campaign;
 import org.lab.rm.engine.model.actor.Actor;
 import org.lab.rm.engine.model.actor.ActorAttribute;
 import org.lab.rm.engine.model.actor.ActorClass;
+import org.lab.rm.engine.model.actor.ActorContext;
 import org.lab.rm.engine.model.actor.AttributeType;
 import org.lab.rm.engine.model.actor.Gender;
+import org.lab.rm.engine.model.actor.Inventory;
 import org.lab.rm.engine.model.actor.Race;
+import org.lab.rm.engine.model.items.Item;
+import org.lab.rm.engine.model.items.Weapon;
+import org.lab.rm.engine.model.items.WeaponType;
 import org.lab.rm.engine.model.user.User;
 import org.mongodb.morphia.Datastore;
 
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 
-public class TestMorphia {
+public class TestModel {
 
 	@Test
 	public void test() {
@@ -59,13 +64,28 @@ public class TestMorphia {
 		actor02.setActorClass(ActorClass.MAGICIAN);
 		datastore.save(actor02);
 
+		WeaponType bastardSword = datastore.find(WeaponType.class, "name", "Bastard Sword").iterator().next();
+
+		ActorContext actorContext01 = new ActorContext();
+		actorContext01.setActor(actor01);
+		actorContext01.setInventory(new Inventory());
+		actorContext01.getInventory().setFirstHandEquipedWeapon(new Weapon(bastardSword));
+		actorContext01.getInventory().setBags(new ArrayList<Item>());
+		actorContext01.getInventory().getBags().add(new Item("Silver coin", 23));
+		actorContext01.getInventory().getBags().add(new Item("Copper coin", 23));
+		actorContext01.setCurrentHitPoints(actor01.getMaxHitPoints());
+		datastore.save(actorContext01);
+
+		ActorContext actorContext02 = new ActorContext();
+		actorContext01.setActor(actor02);
+		datastore.save(actorContext02);
+
 		Campaign campaign = new Campaign();
 		campaign.setName("Dummy campaign");
 		campaign.setOwner(owner);
-		campaign.setActors(new ArrayList<Actor>());
-		campaign.getActors().add(actor01);
-		campaign.getActors().add(actor02);
-
+		campaign.setActors(new ArrayList<ActorContext>());
+		campaign.getActors().add(actorContext01);
+		campaign.getActors().add(actorContext02);
 		datastore.save(campaign);
 	}
 

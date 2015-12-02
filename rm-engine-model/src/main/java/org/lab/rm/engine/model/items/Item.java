@@ -2,11 +2,7 @@ package org.lab.rm.engine.model.items;
 
 import java.math.BigDecimal;
 
-import org.bson.types.ObjectId;
-
 public class Item {
-
-	private ObjectId _id;
 
 	private ItemType type;
 
@@ -16,20 +12,16 @@ public class Item {
 
 	private BigDecimal weigth;
 
-	public ObjectId getId() {
-		return _id;
+	public Item() {
 	}
 
-	public void setId(ObjectId id) {
-		this._id = id;
+	public Item(String name) {
+		this.name = name;
 	}
 
-	public ObjectId get_id() {
-		return _id;
-	}
-
-	public void set_id(ObjectId _id) {
-		this._id = _id;
+	public Item(String name, Integer units) {
+		this.name = name;
+		this.units = units;
 	}
 
 	public ItemType getType() {
