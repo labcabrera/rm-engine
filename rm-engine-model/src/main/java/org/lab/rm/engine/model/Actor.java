@@ -3,23 +3,28 @@ package org.lab.rm.engine.model;
 import java.math.BigDecimal;
 import java.util.List;
 
+import org.bson.types.ObjectId;
 import org.lab.rm.engine.model.common.User;
 
-public class Actor {
+public class Actor implements HasId {
 
-	private Long id;
+	private ObjectId id;
 
 	private User owner;
 
 	private String name;
 
-	private Integer level;
-
-	private Gender gender;
+	private Race race;
 
 	private ActorClass actorClass;
 
-	private Race race;
+	private Integer maxLevel;
+
+	private Integer currentLevel;
+
+	private Long xp;
+
+	private Gender gender;
 
 	private ActorAttributes attributes;
 
@@ -31,11 +36,13 @@ public class Actor {
 
 	private BigDecimal height;
 
-	public Long getId() {
+	@Override
+	public ObjectId getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	@Override
+	public void setId(ObjectId id) {
 		this.id = id;
 	}
 
@@ -55,12 +62,28 @@ public class Actor {
 		this.name = name;
 	}
 
-	public Integer getLevel() {
-		return level;
+	public Integer getMaxLevel() {
+		return maxLevel;
 	}
 
-	public void setLevel(Integer level) {
-		this.level = level;
+	public void setMaxLevel(Integer maxLevel) {
+		this.maxLevel = maxLevel;
+	}
+
+	public Integer getCurrentLevel() {
+		return currentLevel;
+	}
+
+	public void setCurrentLevel(Integer currentLevel) {
+		this.currentLevel = currentLevel;
+	}
+
+	public Long getXp() {
+		return xp;
+	}
+
+	public void setXp(Long xp) {
+		this.xp = xp;
 	}
 
 	public Gender getGender() {
@@ -126,4 +149,5 @@ public class Actor {
 	public void setHeight(BigDecimal height) {
 		this.height = height;
 	}
+
 }

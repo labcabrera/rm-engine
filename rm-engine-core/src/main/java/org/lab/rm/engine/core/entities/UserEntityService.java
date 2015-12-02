@@ -8,11 +8,11 @@ public class UserEntityService extends MongoEntityService<User> {
 
 	@Override
 	protected String getCollectionName() {
-		return "user";
+		return "users";
 	}
 
 	public User findByName(String name) {
-		Bson filter = BsonDocument.parse("{\"name\": \"" + name + "\"}");
+		Bson filter = BsonDocument.parse(String.format("{\"name\": \"%s\"}", name));
 		return getCollection().find(filter, User.class).first();
 	}
 

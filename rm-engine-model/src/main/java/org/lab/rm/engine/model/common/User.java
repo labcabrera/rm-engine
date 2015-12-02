@@ -1,8 +1,9 @@
 package org.lab.rm.engine.model.common;
 
 import org.bson.types.ObjectId;
+import org.lab.rm.engine.model.HasId;
 
-public class User {
+public class User implements HasId {
 
 	private ObjectId id;
 
@@ -25,10 +26,12 @@ public class User {
 		return this;
 	}
 
+	@Override
 	public ObjectId getId() {
 		return id;
 	}
 
+	@Override
 	public void setId(ObjectId id) {
 		this.id = id;
 	}

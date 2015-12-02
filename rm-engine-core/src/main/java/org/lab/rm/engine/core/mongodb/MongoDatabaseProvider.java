@@ -6,6 +6,7 @@ import org.bson.Document;
 import org.bson.codecs.Codec;
 import org.bson.codecs.configuration.CodecRegistries;
 import org.bson.codecs.configuration.CodecRegistry;
+import org.lab.rm.engine.core.mongodb.codecs.ActorCodec;
 import org.lab.rm.engine.core.mongodb.codecs.UserCodec;
 
 import com.google.inject.Singleton;
@@ -23,8 +24,9 @@ public class MongoDatabaseProvider implements Provider<MongoDatabase> {
 	public MongoDatabaseProvider() {
 		threadLocal = new ThreadLocal<>();
 		Codec<Document> defaultDocumentCodec = MongoClient.getDefaultCodecRegistry().get(Document.class);
-		UserCodec gradeCodec = new UserCodec(defaultDocumentCodec);
-		CodecRegistry codecRegistry = CodecRegistries.fromRegistries(MongoClient.getDefaultCodecRegistry(), CodecRegistries.fromCodecs(gradeCodec));
+		UserCodec userCodec = new UserCodec(defaultDocumentCodec);
+		ActorCodec actorCodec = new ActorCodec(defaultDocumentCodec);
+		CodecRegistry codecRegistry = CodecRegistries.fromRegistries(MongoClient.getDefaultCodecRegistry(), CodecRegistries.fromCodecs(userCodec, actorCodec));
 		MongoClientOptions options = MongoClientOptions.builder().codecRegistry(codecRegistry).build();
 		mongoClient = new MongoClient("localhost:27017", options);
 	}
