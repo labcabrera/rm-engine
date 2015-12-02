@@ -1,4 +1,4 @@
-package org.lab.rm.engine.core.guice.serialization;
+package org.lab.rm.engine.core.serialization;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -27,7 +27,6 @@ public class Serializer {
 		builder.setPrettyPrinting();
 		builder.addSerializationExclusionStrategy(new SerializationExclusionStrategy());
 		builder.setDateFormat(DATE_FORMAT_PATTERN);
-		// builder.registerTypeAdapter(DBRef.class, new DBRefSerializer());
 		return builder;
 	}
 

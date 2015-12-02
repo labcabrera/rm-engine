@@ -1,6 +1,6 @@
 package org.lab.rm.engine.web;
 
-import org.lab.rm.engine.core.guice.RmEngineModule;
+import org.lab.rm.engine.core.guice.CoreModule;
 import org.lab.rm.engine.web.json.GsonMessageBodyHandler;
 import org.lab.rm.engine.web.rest.EntityRestService;
 import org.lab.rm.engine.web.rest.RandomRestService;
@@ -18,7 +18,7 @@ public class RestModule implements Module {
 	@Override
 	public void configure(final Binder binder) {
 		LOG.debug("Configuring Guice Module");
-		binder.install(new RmEngineModule());
+		binder.install(new CoreModule());
 		binder.bind(GsonMessageBodyHandler.class);
 		binder.bind(SecurityInterceptor.class);
 		bindRestServices(binder);

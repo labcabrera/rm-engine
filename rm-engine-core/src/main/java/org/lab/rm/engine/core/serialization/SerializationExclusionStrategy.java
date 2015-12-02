@@ -1,4 +1,4 @@
-package org.lab.rm.engine.core.guice.serialization;
+package org.lab.rm.engine.core.serialization;
 
 import org.lab.rm.engine.model.annotations.NotSerializable;
 

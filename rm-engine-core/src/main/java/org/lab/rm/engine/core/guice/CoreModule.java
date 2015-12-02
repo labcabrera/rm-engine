@@ -10,9 +10,9 @@ import org.slf4j.LoggerFactory;
 import com.google.inject.AbstractModule;
 import com.google.inject.name.Names;
 
-public class RmEngineModule extends AbstractModule {
+public class CoreModule extends AbstractModule {
 
-	private static final Logger LOG = LoggerFactory.getLogger(RmEngineModule.class);
+	private static final Logger LOG = LoggerFactory.getLogger(CoreModule.class);
 
 	@Override
 	public void configure() {

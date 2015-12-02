@@ -1,8 +1,14 @@
 package org.lab.rm.engine.model.items;
 
+import org.bson.types.ObjectId;
+import org.mongodb.morphia.annotations.Entity;
+import org.mongodb.morphia.annotations.Id;
+
+@Entity("weaponTypes")
 public class WeaponType extends Item {
 
-	public static final String COLLECTION_NAME = "weapon";
+	@Id
+	private ObjectId id;
 
 	private Float length;
 

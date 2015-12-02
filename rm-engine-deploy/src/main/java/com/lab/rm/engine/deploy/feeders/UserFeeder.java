@@ -1,19 +1,11 @@
 package com.lab.rm.engine.deploy.feeders;
 
 import org.apache.commons.codec.digest.DigestUtils;
-import org.bson.Document;
 import org.lab.rm.engine.model.user.User;
-
-import com.mongodb.client.MongoCollection;
 
 import net.sf.flatpack.DataSet;
 
-public class UserFeeder extends CsvFeeder {
-
-	@Override
-	protected String getCollectionName() {
-		return "users";
-	}
+public class UserFeeder extends CsvFeeder<User> {
 
 	@Override
 	protected String getResourceName() {
@@ -21,11 +13,11 @@ public class UserFeeder extends CsvFeeder {
 	}
 
 	@Override
-	protected void processRow(DataSet dataSet, MongoCollection<Document> collection) {
+	protected User parseRow(DataSet dataSet) {
 		User user = new User();
 		user.setName(dataSet.getString("NAME"));
 		user.setEmail(dataSet.getString("EMAIL"));
 		user.setPasswordDigest(DigestUtils.sha256Hex(dataSet.getString("PASSWORD")));
-		collection.insertOne(Document.parse(serializer.toJson(user)));
+		return user;
 	}
 }

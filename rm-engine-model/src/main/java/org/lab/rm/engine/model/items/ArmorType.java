@@ -1,23 +1,25 @@
 package org.lab.rm.engine.model.items;
 
 import org.bson.types.ObjectId;
+import org.mongodb.morphia.annotations.Entity;
+import org.mongodb.morphia.annotations.Id;
 
+@Entity("armorTypes")
 public class ArmorType {
 
-	public static final String COLLECTION_NAME = "armor";
-
+	@Id
 	private ObjectId _id;
 
 	private String code;
 
 	private String description;
 
-	public ObjectId getId() {
+	public ObjectId get_id() {
 		return _id;
 	}
 
-	public void setId(ObjectId id) {
-		this._id = id;
+	public void set_id(ObjectId _id) {
+		this._id = _id;
 	}
 
 	public String getCode() {

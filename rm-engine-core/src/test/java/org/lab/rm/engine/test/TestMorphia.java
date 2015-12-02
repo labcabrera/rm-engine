@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import javax.inject.Provider;
 
 import org.junit.Test;
-import org.lab.rm.engine.core.guice.RmEngineModule;
+import org.lab.rm.engine.core.guice.CoreModule;
 import org.lab.rm.engine.model.actor.Actor;
 import org.lab.rm.engine.model.actor.ActorAttribute;
 import org.lab.rm.engine.model.actor.ActorClass;
@@ -22,7 +22,7 @@ public class TestMorphia {
 
 	@Test
 	public void test() {
-		Injector injector = Guice.createInjector(new RmEngineModule());
+		Injector injector = Guice.createInjector(new CoreModule());
 		Provider<Datastore> datastoreProvider = injector.getProvider(Datastore.class);
 
 		// final Morphia morphia = new Morphia();
