@@ -8,7 +8,7 @@ import org.lab.rm.engine.model.user.User;
 
 public class Actor implements HasId {
 
-	private ObjectId id;
+	private ObjectId _id;
 
 	private User owner;
 
@@ -38,12 +38,12 @@ public class Actor implements HasId {
 
 	@Override
 	public ObjectId getId() {
-		return id;
+		return _id;
 	}
 
 	@Override
 	public void setId(ObjectId id) {
-		this.id = id;
+		this._id = id;
 	}
 
 	public User getOwner() {

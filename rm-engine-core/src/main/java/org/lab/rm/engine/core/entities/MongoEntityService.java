@@ -30,26 +30,8 @@ public abstract class MongoEntityService<E> implements EntityWriter<E>, EntityRe
 	@Override
 	public SearchResults<E> find(String expression, Integer page, Integer count) {
 		throw new NotImplementedException("find");
-		// MongoCollection<Document> collection = getCollection();
-		// FindIterable<Actor> items;
-		// if (StringUtils.isNotEmpty(expression)) {
-		// BsonDocument filter = BsonDocument.parse(expression);
-		// items = collection.find(filter, Actor.class);
-		// } else {
-		// items = collection.find(Actor.class);
-		// }
-		//
-		// final SearchResults<Actor> result = new SearchResults<>();
-		// result.setResults(new ArrayList<E>());
-		// items.forEach(new Block<Actor>() {
-		//
-		// @Override
-		// public void apply(Actor t) {
-		// result.getResults().add(t);
-		//
-		// }
-		// });
-		// return result;
+		// Ver rest entity service
+
 	}
 
 	@Override

@@ -1,4 +1,4 @@
-package com.lab.rm.engine.deploy;
+package com.lab.rm.engine.deploy.feeders;
 
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -10,7 +10,6 @@ import javax.inject.Provider;
 import org.bson.Document;
 import org.lab.rm.engine.core.Constants;
 import org.lab.rm.engine.core.guice.serialization.Serializer;
-import org.lab.rm.engine.model.ArmorType;
 
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
@@ -19,31 +18,34 @@ import net.sf.flatpack.DataSet;
 import net.sf.flatpack.DefaultParserFactory;
 import net.sf.flatpack.Parser;
 
-public class ArmorTypeFeeder implements Runnable {
+public abstract class CsvFeeder implements Runnable {
 
 	@Inject
-	private Provider<MongoDatabase> mongoProvider;
+	protected Provider<MongoDatabase> mongoProvider;
 	@Inject
-	private Serializer serializer;
+	protected Serializer serializer;
 
 	@Override
 	public void run() {
 		try {
-			InputStream source = Thread.currentThread().getContextClassLoader().getResourceAsStream("armor-types.csv");
+			InputStream source = Thread.currentThread().getContextClassLoader().getResourceAsStream(getResourceName());
 			Reader reader = new InputStreamReader(source, Constants.ENCODING);
 			Parser parser = DefaultParserFactory.getInstance().newDelimitedParser(reader, ',', '"');
 			DataSet dataSet = parser.parse();
 			MongoDatabase mongoDatabase = mongoProvider.get();
-			MongoCollection<Document> collection = mongoDatabase.getCollection("armor_types");
+			MongoCollection<Document> collection = mongoDatabase.getCollection(getCollectionName());
 			while (dataSet.next()) {
-				ArmorType entity = new ArmorType();
-				entity.setCode(dataSet.getString("Armor type"));
-				entity.setDescription(dataSet.getString("Notes"));
-				collection.insertOne(Document.parse(serializer.toJson(entity)));
+				processRow(dataSet, collection);
 			}
 		} catch (Exception ex) {
-			throw new RuntimeException("Armor feeder error", ex);
+			throw new RuntimeException("Feeder error", ex);
 		}
 	}
+
+	protected abstract String getCollectionName();
+
+	protected abstract String getResourceName();
+
+	protected abstract void processRow(DataSet dataSet, MongoCollection<Document> collection);
 
 }

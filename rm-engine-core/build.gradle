@@ -4,5 +4,6 @@ dependencies {
 	compile 'com.google.code.gson:gson:2.5'
 	compile 'com.google.inject:guice:4.0'
 	compile 'org.apache.commons:commons-lang3:3.4'
+	compile 'commons-codec:commons-codec:1.10'
 	testCompile 'junit:junit:4.12'
 }
