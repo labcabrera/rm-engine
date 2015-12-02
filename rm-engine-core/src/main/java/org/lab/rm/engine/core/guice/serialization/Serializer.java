@@ -27,6 +27,7 @@ public class Serializer {
 		builder.setPrettyPrinting();
 		builder.addSerializationExclusionStrategy(new SerializationExclusionStrategy());
 		builder.setDateFormat(DATE_FORMAT_PATTERN);
+		// builder.registerTypeAdapter(DBRef.class, new DBRefSerializer());
 		return builder;
 	}
 

@@ -4,6 +4,8 @@ import org.bson.types.ObjectId;
 
 public class ArmorType {
 
+	public static final String COLLECTION_NAME = "armor";
+
 	private ObjectId _id;
 
 	private String code;

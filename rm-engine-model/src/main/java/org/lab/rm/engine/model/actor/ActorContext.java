@@ -2,11 +2,13 @@ package org.lab.rm.engine.model.actor;
 
 import org.bson.types.ObjectId;
 
+import com.mongodb.DBRef;
+
 public class ActorContext {
 
 	private ObjectId _id;
 
-	private Actor character;
+	private DBRef character;
 
 	private Integer currentHitPoints;
 
@@ -14,15 +16,11 @@ public class ActorContext {
 		return _id;
 	}
 
-	public void set_id(ObjectId id) {
-		this._id = id;
-	}
-
-	public Actor getCharacter() {
+	public DBRef getCharacter() {
 		return character;
 	}
 
-	public void setCharacter(Actor character) {
+	public void setCharacter(DBRef character) {
 		this.character = character;
 	}
 

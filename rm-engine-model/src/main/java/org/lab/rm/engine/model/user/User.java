@@ -1,11 +1,14 @@
 package org.lab.rm.engine.model.user;
 
 import org.bson.types.ObjectId;
-import org.lab.rm.engine.model.HasId;
+import org.mongodb.morphia.annotations.Entity;
+import org.mongodb.morphia.annotations.Id;
 
-public class User implements HasId {
+@Entity("users")
+public class User {
 
-	private ObjectId id;
+	@Id
+	private ObjectId _id;
 
 	private String name;
 
@@ -26,14 +29,12 @@ public class User implements HasId {
 		return this;
 	}
 
-	@Override
 	public ObjectId getId() {
-		return id;
+		return _id;
 	}
 
-	@Override
 	public void setId(ObjectId id) {
-		this.id = id;
+		this._id = id;
 	}
 
 	public String getName() {

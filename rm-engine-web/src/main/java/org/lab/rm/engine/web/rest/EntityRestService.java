@@ -16,8 +16,10 @@ import javax.ws.rs.core.MediaType;
 import org.apache.commons.lang3.StringUtils;
 import org.bson.BsonDocument;
 import org.bson.Document;
+import org.lab.rm.engine.core.Constants;
 
 import com.mongodb.Block;
+import com.mongodb.MongoClient;
 import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
@@ -28,12 +30,13 @@ import com.mongodb.client.MongoDatabase;
 public class EntityRestService {
 
 	@Inject
-	private Provider<MongoDatabase> mongoProvider;
+	private Provider<MongoClient> mongoProvider;
 
 	@GET
 	@Path("find/{name}")
 	public List<Document> find(@PathParam("name") String name, @QueryParam("q") String expression, @QueryParam("q") Integer p, @QueryParam("q") Integer c) {
-		MongoDatabase mongoDatabase = mongoProvider.get();
+		MongoClient mongoClient = mongoProvider.get();
+		MongoDatabase mongoDatabase = mongoClient.getDatabase(Constants.DATABASE);
 		MongoCollection<Document> collection = mongoDatabase.getCollection(name);
 		FindIterable<Document> find;
 		if (StringUtils.isNotBlank(expression)) {

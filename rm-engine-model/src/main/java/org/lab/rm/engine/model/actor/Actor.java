@@ -4,13 +4,18 @@ import java.math.BigDecimal;
 import java.util.List;
 
 import org.bson.types.ObjectId;
-import org.lab.rm.engine.model.HasId;
 import org.lab.rm.engine.model.user.User;
+import org.mongodb.morphia.annotations.Entity;
+import org.mongodb.morphia.annotations.Id;
+import org.mongodb.morphia.annotations.Reference;
 
-public class Actor implements HasId {
+@Entity("actors")
+public class Actor {
 
-	private ObjectId _id;
+	@Id
+	private ObjectId id;
 
+	@Reference
 	private User owner;
 
 	private String name;
@@ -41,14 +46,12 @@ public class Actor implements HasId {
 
 	private String notes;
 
-	@Override
 	public ObjectId getId() {
-		return _id;
+		return id;
 	}
 
-	@Override
 	public void setId(ObjectId id) {
-		this._id = id;
+		this.id = id;
 	}
 
 	public User getOwner() {
@@ -121,14 +124,6 @@ public class Actor implements HasId {
 
 	public void setRace(Race race) {
 		this.race = race;
-	}
-
-	public ObjectId get_id() {
-		return _id;
-	}
-
-	public void set_id(ObjectId _id) {
-		this._id = _id;
 	}
 
 	public List<ActorAttribute> getAttributes() {

@@ -2,11 +2,9 @@ package org.lab.rm.engine.model.items;
 
 public class WeaponType extends Item {
 
-	private String name;
+	public static final String COLLECTION_NAME = "weapon";
 
 	private Float length;
-
-	private Float weught;
 
 	private Integer flumbe;
 
@@ -18,30 +16,12 @@ public class WeaponType extends Item {
 
 	private String category;
 
-	@Override
-	public String getName() {
-		return name;
-	}
-
-	@Override
-	public void setName(String name) {
-		this.name = name;
-	}
-
 	public Float getLength() {
 		return length;
 	}
 
 	public void setLength(Float length) {
 		this.length = length;
-	}
-
-	public Float getWeught() {
-		return weught;
-	}
-
-	public void setWeught(Float weught) {
-		this.weught = weught;
 	}
 
 	public Integer getFlumbe() {

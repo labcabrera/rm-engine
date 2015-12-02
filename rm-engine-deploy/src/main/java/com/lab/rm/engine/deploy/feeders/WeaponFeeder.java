@@ -11,7 +11,7 @@ public class WeaponFeeder extends CsvFeeder {
 
 	@Override
 	protected String getCollectionName() {
-		return "armor";
+		return WeaponType.COLLECTION_NAME;
 	}
 
 	@Override
