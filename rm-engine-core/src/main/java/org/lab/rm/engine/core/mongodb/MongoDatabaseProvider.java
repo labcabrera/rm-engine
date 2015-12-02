@@ -27,6 +27,7 @@ public class MongoDatabaseProvider implements Provider<MongoDatabase> {
 		UserCodec userCodec = new UserCodec(defaultDocumentCodec);
 		ActorCodec actorCodec = new ActorCodec(defaultDocumentCodec);
 		CodecRegistry codecRegistry = CodecRegistries.fromRegistries(MongoClient.getDefaultCodecRegistry(), CodecRegistries.fromCodecs(userCodec, actorCodec));
+
 		MongoClientOptions options = MongoClientOptions.builder().codecRegistry(codecRegistry).build();
 		mongoClient = new MongoClient("localhost:27017", options);
 	}

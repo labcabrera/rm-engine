@@ -1,7 +1,5 @@
 package org.lab.rm.engine.web.rest;
 
-import java.io.Serializable;
-
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
@@ -18,7 +16,7 @@ import org.lab.rm.engine.model.Actor;
 import org.lab.rm.engine.model.common.Message;
 import org.lab.rm.engine.model.common.SearchResults;
 
-@Path("random")
+@Path("actor")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 public class ActorRestService implements CrudRestService<Actor> {
@@ -29,7 +27,7 @@ public class ActorRestService implements CrudRestService<Actor> {
 	@GET
 	@Path("id/{id}")
 	@Override
-	public Actor findById(@PathParam("id") Serializable primaryKey) {
+	public Actor findById(@PathParam("id") String primaryKey) {
 		return entityService.findByPrimaryKey(primaryKey);
 	}
 
@@ -56,7 +54,7 @@ public class ActorRestService implements CrudRestService<Actor> {
 
 	@DELETE
 	@Override
-	public Message<Actor> remove(Serializable primaryKey) {
+	public Message<Actor> remove(String primaryKey) {
 		return entityService.remove(primaryKey);
 	}
 }

@@ -4,6 +4,7 @@ import org.junit.Test;
 import org.lab.rm.engine.core.actor.ActorEntityService;
 import org.lab.rm.engine.core.entities.UserEntityService;
 import org.lab.rm.engine.core.guice.RmEngineModule;
+import org.lab.rm.engine.core.guice.serialization.Serializer;
 import org.lab.rm.engine.model.Actor;
 import org.lab.rm.engine.model.ActorAttributes;
 import org.lab.rm.engine.model.ActorClass;
@@ -23,12 +24,12 @@ public class ActorEntityTest {
 
 		UserEntityService entityService = injector.getInstance(UserEntityService.class);
 		ActorEntityService actorEntityService = injector.getInstance(ActorEntityService.class);
+		Serializer serializer = injector.getInstance(Serializer.class);
 
 		User user = entityService.findByName("lab.cabrera");
-		user.setName("labcabrera");
-		user.setEmail("lab.cabrera@gmail.com");
 
 		Actor actor = new Actor();
+		actor.setOwner(user);
 		actor.setName("Kiove");
 		actor.setActorClass(ActorClass.ROGUE);
 		actor.setRace(Race.GREY_ELF);
@@ -49,7 +50,9 @@ public class ActorEntityTest {
 		actor.getAttributes().setMaxHitPoints(456);
 
 		Message<Actor> result = actorEntityService.persist(actor);
-		System.out.println(result);
+		System.out.println("Persist result:");
+		System.out.println(serializer.toJson(result));
+
 	}
 
 }

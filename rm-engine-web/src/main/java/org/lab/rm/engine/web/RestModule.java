@@ -3,6 +3,7 @@ package org.lab.rm.engine.web;
 import org.lab.rm.engine.core.guice.RmEngineModule;
 import org.lab.rm.engine.web.json.GsonMessageBodyHandler;
 import org.lab.rm.engine.web.rest.ActorRestService;
+import org.lab.rm.engine.web.rest.EntityRestService;
 import org.lab.rm.engine.web.rest.RandomRestService;
 import org.lab.rm.engine.web.security.SecurityInterceptor;
 import org.slf4j.Logger;
@@ -21,10 +22,12 @@ public class RestModule implements Module {
 		binder.install(new RmEngineModule());
 		binder.bind(GsonMessageBodyHandler.class);
 		binder.bind(SecurityInterceptor.class);
+		bindRestServices(binder);
 	}
 
 	private void bindRestServices(Binder binder) {
 		binder.bind(ActorRestService.class);
+		binder.bind(EntityRestService.class);
 		binder.bind(RandomRestService.class);
 
 	}

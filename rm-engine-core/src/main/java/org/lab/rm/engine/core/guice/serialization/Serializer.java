@@ -67,4 +67,20 @@ public class Serializer {
 			}
 		}
 	}
+
+	public <T> T deserialize(Class<T> type, String json) {
+		InputStreamReader streamReader = null;
+		try {
+			Type jsonType = type;
+			return getBuilder().create().fromJson(json, jsonType);
+		} finally {
+			if (streamReader != null) {
+				try {
+					streamReader.close();
+				} catch (IOException ignore) {
+				}
+			}
+		}
+	}
+
 }

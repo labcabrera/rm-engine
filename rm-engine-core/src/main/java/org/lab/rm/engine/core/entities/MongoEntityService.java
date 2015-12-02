@@ -1,19 +1,17 @@
 package org.lab.rm.engine.core.entities;
 
 import java.io.Serializable;
-import java.util.Iterator;
 
 import javax.inject.Inject;
 import javax.inject.Provider;
 
 import org.apache.commons.lang3.NotImplementedException;
 import org.bson.Document;
+import org.lab.rm.engine.core.guice.serialization.Serializer;
 import org.lab.rm.engine.model.common.Message;
 import org.lab.rm.engine.model.common.SearchResults;
 
 import com.google.gson.Gson;
-import com.mongodb.BasicDBObject;
-import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 
@@ -21,6 +19,8 @@ public abstract class MongoEntityService<E> implements EntityWriter<E>, EntityRe
 
 	@Inject
 	protected Provider<MongoDatabase> mongoProvider;
+	@Inject
+	protected Serializer serializer;
 
 	@Override
 	public E findByPrimaryKey(Serializable primaryKey) {
@@ -29,14 +29,27 @@ public abstract class MongoEntityService<E> implements EntityWriter<E>, EntityRe
 
 	@Override
 	public SearchResults<E> find(String expression, Integer page, Integer count) {
-		BasicDBObject query = new BasicDBObject("i", new BasicDBObject("$gt", 50));
-		MongoCollection<Document> collection = getCollection();
-		FindIterable<Document> items = collection.find(query);
-		SearchResults<E> result = new SearchResults<>();
-		for (Iterator iterator = items.iterator(); iterator.hasNext();) {
-			Object i = iterator.next();
-		}
-		return result;
+		throw new NotImplementedException("find");
+		// MongoCollection<Document> collection = getCollection();
+		// FindIterable<Actor> items;
+		// if (StringUtils.isNotEmpty(expression)) {
+		// BsonDocument filter = BsonDocument.parse(expression);
+		// items = collection.find(filter, Actor.class);
+		// } else {
+		// items = collection.find(Actor.class);
+		// }
+		//
+		// final SearchResults<Actor> result = new SearchResults<>();
+		// result.setResults(new ArrayList<E>());
+		// items.forEach(new Block<Actor>() {
+		//
+		// @Override
+		// public void apply(Actor t) {
+		// result.getResults().add(t);
+		//
+		// }
+		// });
+		// return result;
 	}
 
 	@Override
