@@ -1,4 +1,4 @@
-package org.lab.rm.engine.core.actor;
+package org.lab.rm.engine.core;
 
 public final class Constants {
 

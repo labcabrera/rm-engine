@@ -16,7 +16,7 @@ import javax.inject.Singleton;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.Validate;
-import org.lab.rm.engine.core.actor.Constants;
+import org.lab.rm.engine.core.Constants;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

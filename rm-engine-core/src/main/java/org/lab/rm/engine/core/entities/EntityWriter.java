@@ -1,5 +1,7 @@
 package org.lab.rm.engine.core.entities;
 
+import java.io.Serializable;
+
 import org.lab.rm.engine.model.common.Message;
 
 public interface EntityWriter<E> {
@@ -8,6 +10,6 @@ public interface EntityWriter<E> {
 
 	Message<E> merge(E entity);
 
-	Message<E> remove(E entity);
+	Message<E> remove(Serializable primaryKey);
 
 }

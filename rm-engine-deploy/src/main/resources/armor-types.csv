@@ -1,0 +1,25 @@
+Armor Type,Minimum Maneuver Penalty,Maximum Maneuver Penalty,Missile Attack Penalty,Quickness Penalty,Notes
+1,0,0,0,0,Sking or Light Clothing
+2,0,0,0,0,Normal Clothing
+3,0,-5,0,0,Quilt or Padded Armor
+4,0,-10,0,5,Heavy Quilt or Padded Armor
+5,0,-5,0,0,Leather Jerkin
+6,0,-15,5,0,Leather coat
+7,-10,-30,15,10,Leather coat with leggings
+8,-15,-45,15,15,Heavy leather coat with leggings
+9,-5,-50,0,0,Leather Breastplate
+10,-10,-70,10,5,Leather Breastplate and Greaves
+10a,-15,-80,0,10,Leather Breastplate and Leggings
+11,-15,-90,20,15,Leather Breastplate with Greaves and Leggings or Half-Hide Plate
+12,-15,-110,30,20,Leather Plate armor or Full-Hide Plate
+13,-10,-70,0,5,Chain Shirt
+14,-15,-90,10,10,Chain Shirt and Greaves
+14a,-20,-100,0,15,Chain Shirt and Leggings
+15,-20,-110,15,15,Full Chain
+16,-25,-130,15,20,Chain Hauberk
+17,-15,-90,0,10,Metal Breastplate
+18,-20,-115,10,20,Metal Breastplate and Greaves
+18a,-25,-130,0,25,Metal Breastplate and Leggings
+19,-35,-150,30,30,"Half Plate, Lamellar or Banded Armor"
+20,-45,-165,40,40,Full Plate or Lamellar suit.
+20a,-25,-130,40,20,Advanced Full Plate

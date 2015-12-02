@@ -1,6 +1,6 @@
 package org.lab.rm.engine.core.guice;
 
-import org.lab.rm.engine.core.actor.Constants;
+import org.lab.rm.engine.core.Constants;
 import org.lab.rm.engine.core.common.SettingsManager;
 import org.lab.rm.engine.core.mongodb.MongoDatabaseProvider;
 import org.slf4j.Logger;
