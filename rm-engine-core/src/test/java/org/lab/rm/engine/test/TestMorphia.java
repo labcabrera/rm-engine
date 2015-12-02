@@ -6,6 +6,7 @@ import javax.inject.Provider;
 
 import org.junit.Test;
 import org.lab.rm.engine.core.guice.CoreModule;
+import org.lab.rm.engine.model.Campaign;
 import org.lab.rm.engine.model.actor.Actor;
 import org.lab.rm.engine.model.actor.ActorAttribute;
 import org.lab.rm.engine.model.actor.ActorClass;
@@ -25,47 +26,47 @@ public class TestMorphia {
 		Injector injector = Guice.createInjector(new CoreModule());
 		Provider<Datastore> datastoreProvider = injector.getProvider(Datastore.class);
 
-		// final Morphia morphia = new Morphia();
-		//
-		// morphia.mapPackage("org.lab.rm.engine.model");
-		//
-		// final Datastore datastore = morphia.createDatastore(new MongoClient(), "rm-engine");
-		// datastore.ensureIndexes();
-
 		Datastore datastore = datastoreProvider.get();
 
-		User user = new User();
-		user.setName("lab.cabrera");
-		user.setEmail("lab.cabrera@gmail.com");
+		User owner = datastore.find(User.class, "name", "lab.cabrera").iterator().next();
 
-		datastore.save(user);
-		System.out.println(user.getId());
+		Actor actor01 = new Actor();
+		actor01.setName("Kiove");
+		actor01.setOwner(owner);
+		actor01.setActorClass(ActorClass.ROGUE);
+		actor01.setRace(Race.GREY_ELF);
+		actor01.setAge(35);
+		actor01.setCurrentLevel(100);
+		actor01.setMaxLevel(100);
+		actor01.setXp(42384723L);
+		actor01.setMaxHitPoints(245);
+		actor01.setGender(Gender.FEMALE);
+		actor01.setAttributes(new ArrayList<ActorAttribute>());
+		actor01.getAttributes().add(new ActorAttribute(AttributeType.REASONING, 92));
+		actor01.getAttributes().add(new ActorAttribute(AttributeType.AGILITY, 89));
+		actor01.getAttributes().add(new ActorAttribute(AttributeType.CONSTITUTION, 25));
+		actor01.getAttributes().add(new ActorAttribute(AttributeType.APPEARANCE, 75));
+		actor01.getAttributes().add(new ActorAttribute(AttributeType.INTUITION, 55));
+		actor01.getAttributes().add(new ActorAttribute(AttributeType.QUICKNESS, 91));
+		actor01.getAttributes().add(new ActorAttribute(AttributeType.SANITY, 32));
+		actor01.getAttributes().add(new ActorAttribute(AttributeType.MEMORY, 87));
+		datastore.save(actor01);
 
-		Actor actor = new Actor();
-		actor.setName("Kiove");
-		actor.setOwner(user);
-		actor.setName("Kiove");
-		actor.setActorClass(ActorClass.ROGUE);
-		actor.setRace(Race.GREY_ELF);
-		actor.setAge(35);
-		actor.setCurrentLevel(100);
-		actor.setMaxLevel(100);
-		actor.setXp(42384723L);
-		actor.setMaxHitPoints(245);
-		actor.setGender(Gender.FEMALE);
-		actor.setAttributes(new ArrayList<ActorAttribute>());
-		actor.getAttributes().add(new ActorAttribute(AttributeType.REASONING, 92));
-		actor.getAttributes().add(new ActorAttribute(AttributeType.AGILITY, 89));
-		actor.getAttributes().add(new ActorAttribute(AttributeType.CONSTITUTION, 25));
-		actor.getAttributes().add(new ActorAttribute(AttributeType.APPEARANCE, 75));
-		actor.getAttributes().add(new ActorAttribute(AttributeType.INTUITION, 55));
-		actor.getAttributes().add(new ActorAttribute(AttributeType.QUICKNESS, 91));
-		actor.getAttributes().add(new ActorAttribute(AttributeType.SANITY, 32));
-		actor.getAttributes().add(new ActorAttribute(AttributeType.MEMORY, 87));
+		Actor actor02 = new Actor();
+		actor02.setName("Shiova");
+		actor02.setOwner(owner);
+		actor02.setRace(Race.MIXED_MAN);
+		actor02.setActorClass(ActorClass.MAGICIAN);
+		datastore.save(actor02);
 
-		datastore.save(actor);
+		Campaign campaign = new Campaign();
+		campaign.setName("Dummy campaign");
+		campaign.setOwner(owner);
+		campaign.setActors(new ArrayList<Actor>());
+		campaign.getActors().add(actor01);
+		campaign.getActors().add(actor02);
 
-		System.out.println(actor.getId());
+		datastore.save(campaign);
 	}
 
 }
