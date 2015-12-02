@@ -1,5 +1,5 @@
 package org.lab.rm.engine.model;
 
-public class Npc {
+public class AttackInfo {
 
 }
