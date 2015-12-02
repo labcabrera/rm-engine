@@ -1,4 +1,4 @@
-Armor Type,Minimum Maneuver Penalty,Maximum Maneuver Penalty,Missile Attack Penalty,Quickness Penalty,Notes
+"Armor Type","Minimum Maneuver Penalty","Maximum Maneuver Penalty","Missile Attack Penalty","Quickness Penalty","Notes"
 1,0,0,0,0,Sking or Light Clothing
 2,0,0,0,0,Normal Clothing
 3,0,-5,0,0,Quilt or Padded Armor

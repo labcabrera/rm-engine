@@ -1,3 +1,4 @@
 dependencies {
 	compile project(":rm-engine-core")
+	compile 'net.sf.flatpack:flatpack:3.1.1'
 }

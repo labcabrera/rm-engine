@@ -10,5 +10,6 @@ public class Bootstrap {
 	public static void main(String[] args) {
 		Injector injector = Guice.createInjector(new RmEngineModule());
 		injector.getInstance(UserFeeder.class).run();
+		injector.getInstance(ArmorTypeFeeder.class).run();
 	}
 }
