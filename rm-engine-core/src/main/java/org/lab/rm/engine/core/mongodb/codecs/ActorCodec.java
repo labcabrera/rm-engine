@@ -7,7 +7,6 @@ import org.bson.codecs.Codec;
 import org.bson.codecs.DecoderContext;
 import org.bson.codecs.EncoderContext;
 import org.lab.rm.engine.model.Actor;
-import org.lab.rm.engine.model.ActorAttributes;
 
 public class ActorCodec extends AbstractCodec<Actor> {
 
@@ -41,7 +40,6 @@ public class ActorCodec extends AbstractCodec<Actor> {
 		Actor entity = new Actor();
 		entity.setId(document.getObjectId("_id"));
 		entity.setName(document.getString("name"));
-		entity.setAttributes(document.get("attributes", ActorAttributes.class));
 		return entity;
 	}
 

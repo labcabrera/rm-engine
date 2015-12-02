@@ -1,6 +1,6 @@
 package org.lab.rm.engine.model;
 
-public class Weapon {
+public class Weapon extends Item {
 
 	private String name;
 
@@ -18,10 +18,12 @@ public class Weapon {
 
 	private String category;
 
+	@Override
 	public String getName() {
 		return name;
 	}
 
+	@Override
 	public void setName(String name) {
 		this.name = name;
 	}

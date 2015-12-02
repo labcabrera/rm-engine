@@ -24,9 +24,11 @@ public class Actor implements HasId {
 
 	private Long xp;
 
+	private Integer maxHitPoints;
+
 	private Gender gender;
 
-	private ActorAttributes attributes;
+	private List<ActorAttribute> attributes;
 
 	private List<ActorSkill> skills;
 
@@ -35,6 +37,8 @@ public class Actor implements HasId {
 	private BigDecimal weight;
 
 	private BigDecimal height;
+
+	private String notes;
 
 	@Override
 	public ObjectId getId() {
@@ -86,6 +90,14 @@ public class Actor implements HasId {
 		this.xp = xp;
 	}
 
+	public Integer getMaxHitPoints() {
+		return maxHitPoints;
+	}
+
+	public void setMaxHitPoints(Integer maxHitPoints) {
+		this.maxHitPoints = maxHitPoints;
+	}
+
 	public Gender getGender() {
 		return gender;
 	}
@@ -110,11 +122,19 @@ public class Actor implements HasId {
 		this.race = race;
 	}
 
-	public ActorAttributes getAttributes() {
+	public ObjectId get_id() {
+		return _id;
+	}
+
+	public void set_id(ObjectId _id) {
+		this._id = _id;
+	}
+
+	public List<ActorAttribute> getAttributes() {
 		return attributes;
 	}
 
-	public void setAttributes(ActorAttributes attributes) {
+	public void setAttributes(List<ActorAttribute> attributes) {
 		this.attributes = attributes;
 	}
 
@@ -150,4 +170,11 @@ public class Actor implements HasId {
 		this.height = height;
 	}
 
+	public String getNotes() {
+		return notes;
+	}
+
+	public void setNotes(String notes) {
+		this.notes = notes;
+	}
 }

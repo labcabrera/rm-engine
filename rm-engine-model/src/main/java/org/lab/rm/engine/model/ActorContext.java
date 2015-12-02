@@ -2,7 +2,7 @@ package org.lab.rm.engine.model;
 
 import org.bson.types.ObjectId;
 
-public class ActorStatus {
+public class ActorContext {
 
 	private ObjectId _id;
 

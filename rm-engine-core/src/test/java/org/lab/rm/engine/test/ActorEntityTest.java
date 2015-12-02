@@ -1,13 +1,16 @@
 package org.lab.rm.engine.test;
 
+import java.util.ArrayList;
+
 import org.junit.Test;
 import org.lab.rm.engine.core.actor.ActorEntityService;
 import org.lab.rm.engine.core.entities.UserEntityService;
 import org.lab.rm.engine.core.guice.RmEngineModule;
 import org.lab.rm.engine.core.guice.serialization.Serializer;
 import org.lab.rm.engine.model.Actor;
-import org.lab.rm.engine.model.ActorAttributes;
+import org.lab.rm.engine.model.ActorAttribute;
 import org.lab.rm.engine.model.ActorClass;
+import org.lab.rm.engine.model.AttributeType;
 import org.lab.rm.engine.model.Gender;
 import org.lab.rm.engine.model.Race;
 import org.lab.rm.engine.model.common.Message;
@@ -37,17 +40,17 @@ public class ActorEntityTest {
 		actor.setCurrentLevel(100);
 		actor.setMaxLevel(100);
 		actor.setXp(42384723L);
+		actor.setMaxHitPoints(245);
 		actor.setGender(Gender.FEMALE);
-		actor.setAttributes(new ActorAttributes());
-		actor.getAttributes().setReasoning(98);
-		actor.getAttributes().setAgility(94);
-		actor.getAttributes().setConstitution(25);
-		actor.getAttributes().setAppearance(75);
-		actor.getAttributes().setIntuition(55);
-		actor.getAttributes().setQuickness(91);
-		actor.getAttributes().setSanity(23);
-		actor.getAttributes().setMemory(78);
-		actor.getAttributes().setMaxHitPoints(456);
+		actor.setAttributes(new ArrayList<ActorAttribute>());
+		actor.getAttributes().add(new ActorAttribute(AttributeType.REASONING, 92));
+		actor.getAttributes().add(new ActorAttribute(AttributeType.AGILITY, 89));
+		actor.getAttributes().add(new ActorAttribute(AttributeType.CONSTITUTION, 25));
+		actor.getAttributes().add(new ActorAttribute(AttributeType.APPEARANCE, 75));
+		actor.getAttributes().add(new ActorAttribute(AttributeType.INTUITION, 55));
+		actor.getAttributes().add(new ActorAttribute(AttributeType.QUICKNESS, 91));
+		actor.getAttributes().add(new ActorAttribute(AttributeType.SANITY, 32));
+		actor.getAttributes().add(new ActorAttribute(AttributeType.MEMORY, 87));
 
 		Message<Actor> result = actorEntityService.persist(actor);
 		System.out.println("Persist result:");
