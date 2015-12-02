@@ -4,6 +4,7 @@ import java.lang.reflect.Method;
 
 import javax.annotation.security.PermitAll;
 import javax.inject.Inject;
+import javax.inject.Named;
 import javax.ws.rs.container.ContainerRequestContext;
 import javax.ws.rs.container.ContainerRequestFilter;
 import javax.ws.rs.core.MultivaluedMap;
@@ -23,17 +24,18 @@ public class SecurityInterceptor implements ContainerRequestFilter {
 
 	private static final Logger LOG = LoggerFactory.getLogger(SecurityInterceptor.class);
 
-	private static final boolean DISABLE_SECURITY = false;
-
 	private static final String AUTHORIZATION_PROPERTY = "sessionid";
 	private static final ServerResponse ACCESS_FORBIDDEN = new ServerResponse("{\"message\":\"Access forbidden\"}", 403, new Headers<Object>());;
 
 	@Inject
 	private SecurityService securityService;
+	@Inject
+	@Named("authentication")
+	private String authenticationMode;
 
 	@Override
 	public void filter(ContainerRequestContext requestContext) {
-		if (DISABLE_SECURITY) {
+		if ("disabled".equals(authenticationMode)) {
 			return;
 		}
 		ResourceMethodInvoker methodInvoker = (ResourceMethodInvoker) requestContext.getProperty("org.jboss.resteasy.core.ResourceMethodInvoker");
