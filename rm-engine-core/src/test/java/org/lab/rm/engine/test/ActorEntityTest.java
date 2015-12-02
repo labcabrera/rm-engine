@@ -10,7 +10,7 @@ import org.lab.rm.engine.model.ActorClass;
 import org.lab.rm.engine.model.Gender;
 import org.lab.rm.engine.model.Race;
 import org.lab.rm.engine.model.common.Message;
-import org.lab.rm.engine.model.common.User;
+import org.lab.rm.engine.model.user.User;
 
 import com.google.inject.Guice;
 import com.google.inject.Injector;

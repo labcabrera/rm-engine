@@ -1,0 +1,111 @@
+Weapon,Len('),Wgt(lb),Fum,Brk#,Stren.,Speed,Min. Str.,WSC
+Aklys,1,1 ½,5,4,50s,1,-6,"CR, TH"
+Ball and Chain,3 ½,5,5,7,70,4,0,CR
+Bardiche,7,12,6,7,70w,6,4,PA
+Bastard Sword,4,7,4,8,75,4,4 /10,"2H, SL"
+Battle Axe,3 ½,8,5,8,70w,5,4 /18,2H
+Battle Club,5,14,5,8,80,7,8 /24,2H
+Beaked Axe,7,10,7,7,70w,6,4,PA
+Bec de Corbin,8,10,6,7,70w,6,2,PA
+Blackjack,1 ½,3,1,8,50s,1,-4,CR
+Blowpipe,2,1,4,1,80,-,-6,MI
+Dart,½,0.05, ,A,50w, , , 
+Bola,3,3,8,6,50s,4,-4,TH
+Boomerang,2,2 ½,4,7,50w,2,-2,"TH, CR"
+Broadsword,3,4,3,7,80,3,0,SL
+Cat O Nine Tails,4,3,7,4,60s,3,-4,CR
+Club,4,5,4,8,50w,4,-2 /6,"2H, CR"
+Comet Hammer,8,6,7,7,60,4,0,"CR, TH"
+Composite Bow,4,4,4,1,90,-,2,MI
+Arrow,2 ½,0.15, ,A,60w, , , 
+Cudgel,3,3,3,8,50w,2,-2,"CR, TH"
+Cutlass,2 ½,3,3,6,80,2,-2,SL
+Dagger,1,1,1,6,80,1,-4,"SL, TH"
+Dart (throwing),½,½,2,6,40,0,-6,TH
+Falchion,2 ½,5,5,7,80,3,4,SL
+Fauchard,8,8,6,7,70,6,4,PA
+Foil,3 ¼,2 ½,3,3,30,1,-2,SL
+Footmans Flail,6,8,6,7,70w,5,2 /16,2H
+Footmans Mace,3 ½,10,3,8,85w,5,4 /20,2H
+Ge,3,5,8,8,60s,5,-2,TH
+Gladiators Net,5,8,6,8,60s,6,-2,CR
+Glaive,8,8,6,7,70w,6,4,PA
+Great Flail,6,18,8,7,80,8,10 /24,2H
+Great Sword,6,16,6,8,80,7,10 /26,2H
+Guisarme,7,8,6,7,70w,6,2,PA
+Halberd (Polearm),7,12,6,7,70w,7,6,PA
+Hand Axe,2 ½,5,4,7,70w,3,2,"CR, TH"
+Hand Crossbow,1,2,5,3,60,-,-4,MI
+Quarrel,½,0.05, ,A,40w, , , 
+Harpoon,6,6,4,6,70w,5,2,PA
+Hatchet,1,2,2,7,50w,1,-4,"TH, CR"
+Heavy Crossbow,3,12,5,3,80,-,6,MI
+Quarrel,½,0.2, ,A,70w, , , 
+Heavy Spear,10,10,6,5,65w,7,6,PA
+Horsemans Flail,3,5,5,7,65,3,0,CR
+Horsem. Mace (Mace),3,5,2,8,80w,3,-2,CR
+Horsemans Pick,3 ½,4,4,7,60w,3,0 /2,CR
+Javelin,5,3,4,5,40w,3,-4,"TH, PA"
+Jo,4,3,3,7,50w,2,-6,PA
+Katana,3 ½,5,4,7,85,3,0 /8,"2H, SL"
+Knife,¾,½,1,5,70,0,-8,"SL, TH"
+Kynac,2,2,2,4,80,1,-4,"TH, SL"
+Kyotetsu-Shogi,1,5,7,4,50s,2,-2,"SL,CR,TH"
+Lance,10,10,7,8,65w,7,6,PA
+Lasso,30,5,7,4,50s,7,-4,TH
+Light Crossbow,2 ½,7,5,3,75,-,0,MI
+Quarrel,½,0.1, ,A,70w, , , 
+Light Javelin,3,1,2,5,40w,2,-6 /-2,TH
+Long Bow,6,5,5,2,85,-,6,MI
+Arrow,3,0.2, ,A,60w, , , 
+Long Kynac,3,3,3,6,80,2,0,"SL, TH"
+Longsword,3 ¼,4,3,6,70,3,0 /2,SL
+Lucerne Hammer,8,12,7,7,70w,7,6,PA
+Main Gauche,1 ½,1 ½,2,6,70,1,-2,"SL, TH"
+Man Catcher,6,8,6,7,70w,6,4,PA
+Military Flail (Flail),5,10,8,7,70,6,6 /20,2H
+Military Fork,8,7,6,7,70w,6,2,PA
+Morning Star,3 ½,8,8,7,70w,4,6,CR
+Mullet,1 ½,2 ½,4,8,20s,2,-6,"TH, CR"
+Nagamaki,5,8,7,7,75w,5,6 /22,PA
+Naginata,7,6,5,7,70w,5,2,PA
+No Dachi,5,8,7,7,75,5,6 /22,2H
+Nunchaku,2 ½,2 ½,7,7,50w,1,2,CR
+Partisan,8,8,6,7,70w,6,2,PA
+Pike,15,10,6,5,60w,9,4,PA
+Pole,9,10,6,6,75w,7,6,PA
+Poleaxe,7,16,7,7,70w,7,8,PA
+Quarterstaff,6,5,3,7,70w,2,-2,PA
+Ranseur,7,6,5,6,70w,5,0,PA
+Rapier,3 ¼,3,4,4,40,2,0,SL
+Rope Dart,½,1,7,4,50s,1,-6,TH
+Sai,1 ½,3,4,5,70,2,0,"CR, TH"
+Scimitar,3,4,4,5,60,3,0,SL
+Short Bow,3,3,4,2,80,-,-4,MI
+Arrow,2,0.1, ,A,60w, , , 
+Short Stick,1 ½,1,2,8,60w,1,-8,CR
+Short Sword,2,2 ½,2,6,80,2,-2,SL
+Shuriken,¼,¼,2,5,60,0,-6,TH
+Sling,4,0.1,6,1,95,-,-6,MI
+Stone,"2""",¼, ,A,90, , , 
+Sodegarami,5,7,5,7,80w,5,4,PA
+Spear,7,5,5,5,50w,4,0,PA
+Spiked Mace,3,7,5,8,75w,4,4 /8,CR
+Staff Sling,6,2,7,2,85,-,-2,MI
+Stone,"2""",½, ,A,85, , , 
+Steel Whip,6,3,7,7,60,2,-2,CR
+Three Section Staff,7,6,7,7,70w,4,2,PA
+Tiger Claw,2,1 ½,2,6,60,1,-6,SL
+Tiger Hook,3,5,5,6,70,3,4,SL
+Trident,5,6,6,6,40w,5,6,PA
+Two-handed Falchion,4,10,6,8,85,6,8 /22,2H
+Two-handed Scimitar,4,6,5,7,70,4,2 /10,2H
+Two-Handed Sword,5,10,5,8,75,5,6 /22,2H
+Usriev,5,8,7,7,70,5,6,2H
+Voulge,8,12,7,7,70w,6,4,PA
+Wakazashi,2 ½,3,2,6,80,2,-2,SL
+War Fan,1 ½,3,3,7,80,2,-2,CR
+War Hammer,3,5,4,8,80w,4,0 /2,"CR, TH"
+War Mattock,4,7,5,8,70w,5,6 /20,2H
+Whip,8,4,8,4,70s,6,-2,CR
+Woomera,2 ½,2,6,7,50w,6,-2,"TH, CR"

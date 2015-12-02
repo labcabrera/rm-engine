@@ -1,0 +1,9 @@
+apply plugin: 'war'
+
+dependencies {
+	compile project(':rm-engine-core')
+	compile 'org.jboss.resteasy:resteasy-jaxrs:3.0.12.Final'
+	compile 'org.jboss.resteasy:resteasy-guice:3.0.12.Final'
+	compile 'org.jboss.resteasy:jaxrs-api:3.0.12.Final'
+	providedCompile "javax.servlet:servlet-api:2.5"
+}

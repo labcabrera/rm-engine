@@ -1,4 +1,4 @@
-package org.lab.rm.engine.model.common;
+package org.lab.rm.engine.model.user;
 
 import org.bson.types.ObjectId;
 import org.lab.rm.engine.model.HasId;

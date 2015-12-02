@@ -2,7 +2,7 @@ package org.lab.rm.engine.core.entities;
 
 import org.bson.BsonDocument;
 import org.bson.conversions.Bson;
-import org.lab.rm.engine.model.common.User;
+import org.lab.rm.engine.model.user.User;
 
 public class UserEntityService extends MongoEntityService<User> {
 

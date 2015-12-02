@@ -7,7 +7,7 @@ import org.bson.Document;
 import org.lab.rm.engine.model.Actor;
 import org.lab.rm.engine.model.common.Message;
 import org.lab.rm.engine.model.common.SearchResults;
-import org.lab.rm.engine.model.common.User;
+import org.lab.rm.engine.model.user.User;
 
 import com.google.gson.Gson;
 import com.mongodb.client.MongoCollection;

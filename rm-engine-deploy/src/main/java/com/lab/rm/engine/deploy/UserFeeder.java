@@ -3,7 +3,7 @@ package com.lab.rm.engine.deploy;
 import javax.inject.Inject;
 
 import org.lab.rm.engine.core.entities.UserEntityService;
-import org.lab.rm.engine.model.common.User;
+import org.lab.rm.engine.model.user.User;
 
 public class UserFeeder implements Runnable {
 

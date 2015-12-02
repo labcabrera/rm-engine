@@ -1,5 +1,5 @@
 package org.lab.rm.engine.model;
 
-public class ActorItems {
+public class ActorInventory {
 
 }
