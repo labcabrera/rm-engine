@@ -1,8 +1,6 @@
 package org.lab.rm.engine.model.pj;
 
-public class PJAttribute {
-
-	private AttributeType type;
+public class Attribute {
 
 	private Integer value;
 
@@ -11,23 +9,6 @@ public class PJAttribute {
 	private Integer racialBonus;
 
 	private Integer totalBonus;
-
-	public PJAttribute() {
-	}
-
-	public PJAttribute(AttributeType type, Integer value) {
-		this.type = type;
-		this.value = value;
-		this.racialBonus = 0;
-	}
-
-	public AttributeType getType() {
-		return type;
-	}
-
-	public void setType(AttributeType type) {
-		this.type = type;
-	}
 
 	public Integer getValue() {
 		return value;

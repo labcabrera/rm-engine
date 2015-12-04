@@ -3,7 +3,13 @@ package org.lab.rm.engine.model.pj;
 import java.math.BigDecimal;
 import java.util.LinkedHashMap;
 
+import org.bson.types.ObjectId;
+import org.mongodb.morphia.annotations.Entity;
+
+@Entity("raceStats")
 public class RaceStats {
+
+	private ObjectId id;
 
 	private Race race;
 
@@ -23,6 +29,14 @@ public class RaceStats {
 	private Integer pvPoints;
 
 	private Integer maxHitPoints;
+
+	public ObjectId getId() {
+		return id;
+	}
+
+	public void setId(ObjectId id) {
+		this.id = id;
+	}
 
 	public LinkedHashMap<AttributeType, Integer> getAttributes() {
 		return attributes;

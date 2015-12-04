@@ -12,7 +12,7 @@ import org.apache.commons.lang3.Validate;
 import org.lab.rm.engine.core.common.RandomService;
 import org.lab.rm.engine.model.common.Message;
 import org.lab.rm.engine.model.pj.AttributeType;
-import org.lab.rm.engine.model.pj.PJAttribute;
+import org.lab.rm.engine.model.pj.Attribute;
 import org.lab.rm.engine.model.pj.Pj;
 
 @Path("pj/creation")
@@ -30,9 +30,9 @@ public class PjCreationRestService {
 	public Message<Pj> randomizeAttributes(Pj pj) {
 		Validate.notNull(pj.getProfession());
 		Validate.notNull(pj.getRace());
-		pj.setAttributes(new LinkedHashMap<AttributeType, PJAttribute>());
+		pj.setAttributes(new LinkedHashMap<AttributeType, Attribute>());
 		for (AttributeType i : AttributeType.values()) {
-			PJAttribute a = new PJAttribute();
+			Attribute a = new Attribute();
 			a.setValue(randomService.rand(20, 100));
 			pj.getAttributes().put(i, a);
 		}

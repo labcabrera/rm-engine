@@ -37,7 +37,7 @@ public class Pj {
 
 	private Gender gender;
 
-	private LinkedHashMap<AttributeType, PJAttribute> attributes;
+	private LinkedHashMap<AttributeType, Attribute> attributes;
 
 	private List<ActorSkill> skills;
 
@@ -129,11 +129,11 @@ public class Pj {
 		this.race = race;
 	}
 
-	public LinkedHashMap<AttributeType, PJAttribute> getAttributes() {
+	public LinkedHashMap<AttributeType, Attribute> getAttributes() {
 		return attributes;
 	}
 
-	public void setAttributes(LinkedHashMap<AttributeType, PJAttribute> attributes) {
+	public void setAttributes(LinkedHashMap<AttributeType, Attribute> attributes) {
 		this.attributes = attributes;
 	}
 
