@@ -2,28 +2,34 @@ package org.lab.rm.engine.model.pj;
 
 public enum AttributeType {
 
-	AGILITY,
+	/** Constitution */
+	CO,
 
-	CONSTITUTION,
+	/** Agility */
+	AG,
 
-	MEMORY,
+	/** Memory */
+	ME,
 
-	REASONING,
+	/** Reasoning */
+	RE,
 
-	SELD_DISCIPLINE,
+	/** Seld discipline */
+	SD,
 
-	EMPATHY,
+	/** Empathy */
+	EM,
 
-	INTUITION,
+	/** Intuition */
+	IN,
 
-	PRESENCE,
+	/** Presence */
+	PR,
 
-	QUICKNESS,
+	/** Quickness */
+	QU,
 
-	STRENGTH,
-
-	SANITY,
-
-	APPEARANCE
+	/** Strength */
+	ST
 
 }

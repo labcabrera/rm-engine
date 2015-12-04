@@ -1,6 +1,7 @@
 package org.lab.rm.engine.model.pj;
 
 import java.math.BigDecimal;
+import java.util.LinkedHashMap;
 import java.util.List;
 
 import org.bson.types.ObjectId;
@@ -24,6 +25,8 @@ public class Pj {
 
 	private Profession profession;
 
+	private ProfessionRealm realm;
+
 	private Integer maxLevel;
 
 	private Integer currentLevel;
@@ -34,7 +37,7 @@ public class Pj {
 
 	private Gender gender;
 
-	private List<PjAttribute> attributes;
+	private LinkedHashMap<AttributeType, PJAttribute> attributes;
 
 	private List<ActorSkill> skills;
 
@@ -126,11 +129,11 @@ public class Pj {
 		this.race = race;
 	}
 
-	public List<PjAttribute> getAttributes() {
+	public LinkedHashMap<AttributeType, PJAttribute> getAttributes() {
 		return attributes;
 	}
 
-	public void setAttributes(List<PjAttribute> attributes) {
+	public void setAttributes(LinkedHashMap<AttributeType, PJAttribute> attributes) {
 		this.attributes = attributes;
 	}
 
@@ -172,5 +175,13 @@ public class Pj {
 
 	public void setNotes(String notes) {
 		this.notes = notes;
+	}
+
+	public ProfessionRealm getRealm() {
+		return realm;
+	}
+
+	public void setRealm(ProfessionRealm realm) {
+		this.realm = realm;
 	}
 }

@@ -18,7 +18,9 @@ public enum Race {
 
 	HOBBIT,
 
-	HIGH_ORK,
+	ORK,
+
+	URUK,
 
 	TROLL;
 
