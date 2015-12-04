@@ -1,18 +1,18 @@
-package org.lab.rm.engine.model.actor;
+package org.lab.rm.engine.model.pj;
 
 import org.bson.types.ObjectId;
 import org.mongodb.morphia.annotations.Entity;
 import org.mongodb.morphia.annotations.Id;
 import org.mongodb.morphia.annotations.Reference;
 
-@Entity("actorContext")
-public class ActorContext {
+@Entity("pjContext")
+public class PjContext {
 
 	@Id
 	private ObjectId id;
 
 	@Reference
-	private Actor actor;
+	private Pj actor;
 
 	private Inventory inventory;
 
@@ -26,11 +26,11 @@ public class ActorContext {
 		this.id = id;
 	}
 
-	public Actor getActor() {
+	public Pj getActor() {
 		return actor;
 	}
 
-	public void setActor(Actor actor) {
+	public void setActor(Pj actor) {
 		this.actor = actor;
 	}
 

@@ -1,4 +1,4 @@
-package org.lab.rm.engine.model.actor;
+package org.lab.rm.engine.model.pj;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -9,8 +9,8 @@ import org.mongodb.morphia.annotations.Entity;
 import org.mongodb.morphia.annotations.Id;
 import org.mongodb.morphia.annotations.Reference;
 
-@Entity("actors")
-public class Actor {
+@Entity("pjs")
+public class Pj {
 
 	@Id
 	private ObjectId id;
@@ -22,7 +22,7 @@ public class Actor {
 
 	private Race race;
 
-	private ActorClass actorClass;
+	private Profession profession;
 
 	private Integer maxLevel;
 
@@ -34,7 +34,7 @@ public class Actor {
 
 	private Gender gender;
 
-	private List<ActorAttribute> attributes;
+	private List<PjAttribute> attributes;
 
 	private List<ActorSkill> skills;
 
@@ -110,12 +110,12 @@ public class Actor {
 		this.gender = gender;
 	}
 
-	public ActorClass getActorClass() {
-		return actorClass;
+	public Profession getProfession() {
+		return profession;
 	}
 
-	public void setActorClass(ActorClass actorClass) {
-		this.actorClass = actorClass;
+	public void setProfession(Profession actorClass) {
+		this.profession = actorClass;
 	}
 
 	public Race getRace() {
@@ -126,11 +126,11 @@ public class Actor {
 		this.race = race;
 	}
 
-	public List<ActorAttribute> getAttributes() {
+	public List<PjAttribute> getAttributes() {
 		return attributes;
 	}
 
-	public void setAttributes(List<ActorAttribute> attributes) {
+	public void setAttributes(List<PjAttribute> attributes) {
 		this.attributes = attributes;
 	}
 

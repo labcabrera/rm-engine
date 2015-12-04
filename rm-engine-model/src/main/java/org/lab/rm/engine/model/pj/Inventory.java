@@ -1,4 +1,4 @@
-package org.lab.rm.engine.model.actor;
+package org.lab.rm.engine.model.pj;
 
 import java.util.List;
 

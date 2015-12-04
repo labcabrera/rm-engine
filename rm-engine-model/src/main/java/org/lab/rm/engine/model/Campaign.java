@@ -3,7 +3,7 @@ package org.lab.rm.engine.model;
 import java.util.List;
 
 import org.bson.types.ObjectId;
-import org.lab.rm.engine.model.actor.ActorContext;
+import org.lab.rm.engine.model.pj.PjContext;
 import org.lab.rm.engine.model.user.User;
 import org.mongodb.morphia.annotations.Entity;
 import org.mongodb.morphia.annotations.Id;
@@ -21,7 +21,7 @@ public class Campaign {
 	private String name;
 
 	@Reference
-	private List<ActorContext> actors;
+	private List<PjContext> actors;
 
 	public ObjectId getId() {
 		return id;
@@ -47,11 +47,11 @@ public class Campaign {
 		this.name = name;
 	}
 
-	public List<ActorContext> getActors() {
+	public List<PjContext> getActors() {
 		return actors;
 	}
 
-	public void setActors(List<ActorContext> actors) {
+	public void setActors(List<PjContext> actors) {
 		this.actors = actors;
 	}
 }

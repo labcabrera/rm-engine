@@ -7,17 +7,17 @@ import javax.inject.Provider;
 import org.junit.Test;
 import org.lab.rm.engine.core.guice.CoreModule;
 import org.lab.rm.engine.model.Campaign;
-import org.lab.rm.engine.model.actor.Actor;
-import org.lab.rm.engine.model.actor.ActorAttribute;
-import org.lab.rm.engine.model.actor.ActorClass;
-import org.lab.rm.engine.model.actor.ActorContext;
-import org.lab.rm.engine.model.actor.AttributeType;
-import org.lab.rm.engine.model.actor.Gender;
-import org.lab.rm.engine.model.actor.Inventory;
-import org.lab.rm.engine.model.actor.Race;
 import org.lab.rm.engine.model.items.Item;
 import org.lab.rm.engine.model.items.Weapon;
 import org.lab.rm.engine.model.items.WeaponType;
+import org.lab.rm.engine.model.pj.Pj;
+import org.lab.rm.engine.model.pj.PjAttribute;
+import org.lab.rm.engine.model.pj.Profession;
+import org.lab.rm.engine.model.pj.PjContext;
+import org.lab.rm.engine.model.pj.AttributeType;
+import org.lab.rm.engine.model.pj.Gender;
+import org.lab.rm.engine.model.pj.Inventory;
+import org.lab.rm.engine.model.pj.Race;
 import org.lab.rm.engine.model.user.User;
 import org.mongodb.morphia.Datastore;
 
@@ -35,10 +35,10 @@ public class TestModel {
 
 		User owner = datastore.find(User.class, "name", "lab.cabrera").iterator().next();
 
-		Actor actor01 = new Actor();
+		Pj actor01 = new Pj();
 		actor01.setName("Kiove");
 		actor01.setOwner(owner);
-		actor01.setActorClass(ActorClass.ROGUE);
+		actor01.setProfession(Profession.ROGUE);
 		actor01.setRace(Race.GREY_ELF);
 		actor01.setAge(35);
 		actor01.setCurrentLevel(100);
@@ -46,27 +46,27 @@ public class TestModel {
 		actor01.setXp(42384723L);
 		actor01.setMaxHitPoints(245);
 		actor01.setGender(Gender.FEMALE);
-		actor01.setAttributes(new ArrayList<ActorAttribute>());
-		actor01.getAttributes().add(new ActorAttribute(AttributeType.REASONING, 92));
-		actor01.getAttributes().add(new ActorAttribute(AttributeType.AGILITY, 89));
-		actor01.getAttributes().add(new ActorAttribute(AttributeType.CONSTITUTION, 25));
-		actor01.getAttributes().add(new ActorAttribute(AttributeType.APPEARANCE, 75));
-		actor01.getAttributes().add(new ActorAttribute(AttributeType.INTUITION, 55));
-		actor01.getAttributes().add(new ActorAttribute(AttributeType.QUICKNESS, 91));
-		actor01.getAttributes().add(new ActorAttribute(AttributeType.SANITY, 32));
-		actor01.getAttributes().add(new ActorAttribute(AttributeType.MEMORY, 87));
+		actor01.setAttributes(new ArrayList<PjAttribute>());
+		actor01.getAttributes().add(new PjAttribute(AttributeType.REASONING, 92));
+		actor01.getAttributes().add(new PjAttribute(AttributeType.AGILITY, 89));
+		actor01.getAttributes().add(new PjAttribute(AttributeType.CONSTITUTION, 25));
+		actor01.getAttributes().add(new PjAttribute(AttributeType.APPEARANCE, 75));
+		actor01.getAttributes().add(new PjAttribute(AttributeType.INTUITION, 55));
+		actor01.getAttributes().add(new PjAttribute(AttributeType.QUICKNESS, 91));
+		actor01.getAttributes().add(new PjAttribute(AttributeType.SANITY, 32));
+		actor01.getAttributes().add(new PjAttribute(AttributeType.MEMORY, 87));
 		datastore.save(actor01);
 
-		Actor actor02 = new Actor();
+		Pj actor02 = new Pj();
 		actor02.setName("Shiova");
 		actor02.setOwner(owner);
 		actor02.setRace(Race.MIXED_MAN);
-		actor02.setActorClass(ActorClass.MAGICIAN);
+		actor02.setProfession(Profession.MAGE);
 		datastore.save(actor02);
 
 		WeaponType bastardSword = datastore.find(WeaponType.class, "name", "Bastard Sword").iterator().next();
 
-		ActorContext actorContext01 = new ActorContext();
+		PjContext actorContext01 = new PjContext();
 		actorContext01.setActor(actor01);
 		actorContext01.setInventory(new Inventory());
 		actorContext01.getInventory().setFirstHandEquipedWeapon(new Weapon(bastardSword));
@@ -76,14 +76,14 @@ public class TestModel {
 		actorContext01.setCurrentHitPoints(actor01.getMaxHitPoints());
 		datastore.save(actorContext01);
 
-		ActorContext actorContext02 = new ActorContext();
+		PjContext actorContext02 = new PjContext();
 		actorContext01.setActor(actor02);
 		datastore.save(actorContext02);
 
 		Campaign campaign = new Campaign();
 		campaign.setName("Dummy campaign");
 		campaign.setOwner(owner);
-		campaign.setActors(new ArrayList<ActorContext>());
+		campaign.setActors(new ArrayList<PjContext>());
 		campaign.getActors().add(actorContext01);
 		campaign.getActors().add(actorContext02);
 		datastore.save(campaign);

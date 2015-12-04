@@ -1,10 +1,8 @@
-package org.lab.rm.engine.model.actor;
+package org.lab.rm.engine.model.pj;
 
 public enum Race {
 
 	COMMON_MAN,
-
-	MIXED_MAN,
 
 	HIGH_MAN,
 
@@ -20,6 +18,8 @@ public enum Race {
 
 	HOBBIT,
 
-	ORK,
+	HIGH_ORK,
+
+	TROLL;
 
 }

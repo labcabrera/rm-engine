@@ -1,6 +1,6 @@
-package org.lab.rm.engine.model.actor;
+package org.lab.rm.engine.model.pj;
 
-public class ActorAttribute {
+public class PjAttribute {
 
 	private AttributeType type;
 
@@ -12,10 +12,10 @@ public class ActorAttribute {
 
 	private Integer totalBonus;
 
-	public ActorAttribute() {
+	public PjAttribute() {
 	}
 
-	public ActorAttribute(AttributeType type, Integer value) {
+	public PjAttribute(AttributeType type, Integer value) {
 		this.type = type;
 		this.value = value;
 		this.racialBonus = 0;
