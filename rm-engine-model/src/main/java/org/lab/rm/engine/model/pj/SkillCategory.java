@@ -8,6 +8,8 @@ public enum SkillCategory {
 
 	MAGIC,
 
-	SPECIAL;
+	SPECIAL,
+
+	SECONDARY
 
 }

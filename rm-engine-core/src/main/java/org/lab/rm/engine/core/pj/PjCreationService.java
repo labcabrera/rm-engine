@@ -5,8 +5,8 @@ import java.util.LinkedHashMap;
 import javax.inject.Inject;
 
 import org.lab.rm.engine.core.common.RandomService;
-import org.lab.rm.engine.model.pj.AttributeType;
 import org.lab.rm.engine.model.pj.Attribute;
+import org.lab.rm.engine.model.pj.AttributeType;
 import org.lab.rm.engine.model.pj.Pj;
 import org.lab.rm.engine.model.pj.Profession;
 import org.lab.rm.engine.model.pj.ProfessionRealm;
