@@ -6,7 +6,9 @@ var appModule = angular.module('appModule', [ 'ngRoute', 'ngCookies']);
 appModule.config([ '$routeProvider', function($routeProvider, $rootScope, $location) {
 	
 	$routeProvider.when('/characters', { templateUrl : 'html/character/character-list.html', controller : 'CharacterListCtrl'
-	}).when('/character/:id', { templateUrl : 'html/character-detail.html', controller : 'CharacterDetailCtrl'
+	}).when('/character/:id', { templateUrl : 'html/character/character-detail.html', controller : 'CharacterDetailCtrl'
+	}).when('/campaigns', { templateUrl : 'html/campaign/campaign-list.html', controller : 'CampaignListCtrl'
+	}).when('/campaign/:id', { templateUrl : 'html/campaign/campaign-detail.html', controller : 'CharacterDetailCtrl'
 	}).when('/', { templateUrl : 'html/main.html'
 	}).otherwise({ templateUrl : 'html/404.html'
 	});
@@ -112,3 +114,10 @@ appModule.controller('CharacterListCtrl', [ '$scope', '$rootScope', '$routeParam
 
 appModule.controller('CharacterDetailCtrl', [ '$scope', '$rootScope', '$routeParams', '$http', '$filter', 'messageService', function($scope, $rootScope, $routeParams, $http, $filter, messageService) {
 } ]);
+
+appModule.controller('CampaignListCtrl', [ '$scope', '$rootScope', '$routeParams', '$http', '$filter', 'messageService', function($scope, $rootScope, $routeParams, $http, $filter, messageService) {
+} ]);
+
+appModule.controller('CampaignDetailCtrl', [ '$scope', '$rootScope', '$routeParams', '$http', '$filter', 'messageService', function($scope, $rootScope, $routeParams, $http, $filter, messageService) {
+} ]);
+
