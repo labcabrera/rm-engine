@@ -1,4 +1,4 @@
-package org.lab.rm.engine.model.pj;
+package org.lab.rm.engine.model.character;
 
 public enum SkillCategory {
 

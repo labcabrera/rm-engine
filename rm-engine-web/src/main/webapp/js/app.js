@@ -110,6 +110,25 @@ appModule.factory('messageService', function() {
 });
 
 appModule.controller('CharacterListCtrl', [ '$scope', '$rootScope', '$routeParams', '$http', '$filter', 'messageService', function($scope, $rootScope, $routeParams, $http, $filter, messageService) {
+	$scope.currentPage = 1;
+	$scope.itemsPerPage = 20;
+	$scope.getSearchUrl = function() {
+		var q = ""; //TODO
+		return 'rest/entity/find/characters?p=' + $scope.currentPage + '&n=' + $scope.itemsPerPage + "&q=" + q;
+	};
+	$scope.search = function() {
+		messageService.setMessage(null);
+		$scope.setPage(1);
+	};
+	$scope.setPage = function(page) {
+	    $scope.currentPage = page;
+	    $scope.results = null;
+	    $scope.searchMessage = "Loading...";
+	    $http.get($scope.getSearchUrl()).success(function(data) {
+	    	$scope.results = data;
+	    });
+	};
+	$scope.search();
 } ]);
 
 appModule.controller('CharacterDetailCtrl', [ '$scope', '$rootScope', '$routeParams', '$http', '$filter', 'messageService', function($scope, $rootScope, $routeParams, $http, $filter, messageService) {

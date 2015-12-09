@@ -1,4 +1,4 @@
-package org.lab.rm.engine.model.pj;
+package org.lab.rm.engine.model.character;
 
 import java.math.BigDecimal;
 import java.util.LinkedHashMap;
@@ -10,8 +10,8 @@ import org.mongodb.morphia.annotations.Entity;
 import org.mongodb.morphia.annotations.Id;
 import org.mongodb.morphia.annotations.Reference;
 
-@Entity("pjs")
-public class Pj {
+@Entity("characters")
+public class PlayerCharacter {
 
 	@Id
 	private ObjectId id;
@@ -39,7 +39,7 @@ public class Pj {
 
 	private LinkedHashMap<AttributeType, Attribute> attributes;
 
-	private List<ActorSkill> skills;
+	private List<CharacterSkill> skills;
 
 	private Integer age;
 
@@ -137,11 +137,11 @@ public class Pj {
 		this.attributes = attributes;
 	}
 
-	public List<ActorSkill> getSkills() {
+	public List<CharacterSkill> getSkills() {
 		return skills;
 	}
 
-	public void setSkills(List<ActorSkill> skills) {
+	public void setSkills(List<CharacterSkill> skills) {
 		this.skills = skills;
 	}
 

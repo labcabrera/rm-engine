@@ -1,12 +1,12 @@
 package org.lab.rm.engine.core.combat;
 
+import org.lab.rm.engine.model.character.CharacterContext;
 import org.lab.rm.engine.model.combat.AttackBonus;
 import org.lab.rm.engine.model.combat.DefenseBonus;
-import org.lab.rm.engine.model.pj.PjContext;
 
 public class CombatManager {
 
-	public void setUpBonus(PjContext pjContext) {
+	public void setUpBonus(CharacterContext pjContext) {
 		pjContext.setDefenseBonus(calculateDefenseBonus());
 		pjContext.setOffenseBonus(calculateAttackBonus());
 	}

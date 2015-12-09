@@ -34,7 +34,7 @@ public class EntityRestService {
 
 	@GET
 	@Path("find/{name}")
-	public List<Document> find(@PathParam("name") String name, @QueryParam("q") String expression, @QueryParam("q") Integer p, @QueryParam("q") Integer c) {
+	public List<Document> find(@PathParam("name") String name, @QueryParam("q") String expression, @QueryParam("p") Integer p, @QueryParam("n") Integer n) {
 		MongoClient mongoClient = mongoProvider.get();
 		MongoDatabase mongoDatabase = mongoClient.getDatabase(Constants.DATABASE);
 		MongoCollection<Document> collection = mongoDatabase.getCollection(name);
@@ -53,7 +53,5 @@ public class EntityRestService {
 			}
 		});
 		return list;
-
 	}
-
 }

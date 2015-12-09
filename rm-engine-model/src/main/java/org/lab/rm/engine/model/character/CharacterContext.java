@@ -1,20 +1,20 @@
-package org.lab.rm.engine.model.pj;
+package org.lab.rm.engine.model.character;
 
 import org.bson.types.ObjectId;
-import org.lab.rm.engine.model.combat.DefenseBonus;
 import org.lab.rm.engine.model.combat.AttackBonus;
+import org.lab.rm.engine.model.combat.DefenseBonus;
 import org.mongodb.morphia.annotations.Entity;
 import org.mongodb.morphia.annotations.Id;
 import org.mongodb.morphia.annotations.Reference;
 
-@Entity("pjContext")
-public class PjContext {
+@Entity("characterContext")
+public class CharacterContext {
 
 	@Id
 	private ObjectId id;
 
 	@Reference
-	private Pj actor;
+	private PlayerCharacter pj;
 
 	private Inventory inventory;
 
@@ -24,6 +24,12 @@ public class PjContext {
 
 	private Integer currentHitPoints;
 
+	public CharacterContext() {
+	}
+
+	public CharacterContext(PlayerCharacter pj) {
+	}
+
 	public ObjectId getId() {
 		return id;
 	}
@@ -32,12 +38,12 @@ public class PjContext {
 		this.id = id;
 	}
 
-	public Pj getActor() {
-		return actor;
+	public PlayerCharacter getPj() {
+		return pj;
 	}
 
-	public void setActor(Pj actor) {
-		this.actor = actor;
+	public void setPj(PlayerCharacter actor) {
+		this.pj = actor;
 	}
 
 	public Inventory getInventory() {

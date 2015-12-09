@@ -1,4 +1,4 @@
-package org.lab.rm.engine.model.pj;
+package org.lab.rm.engine.model.character;
 
 import java.math.BigDecimal;
 import java.util.LinkedHashMap;

@@ -9,12 +9,12 @@
 				<th>Race</th>
 				<th>Level</th>
 			</tr>
-			<tr>
-				<td><a href="#/character/123">Kiove</a></td>
+			<tr ng-repeat="result in results">
+				<td><a href="#/character/{{result.id}}">{{result.name}}</a></td>
 				<td>labcabrera</td>
-				<td>Rogue</td>
-				<td>Semi elv</td>
-				<td>12</td>
+				<td>{{result.profession}}</td>
+				<td>{{result.race}}</td>
+				<td>{{result.currentLevel}}</td>
 			</tr>
 		</table>
 	</div>

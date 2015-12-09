@@ -2,10 +2,10 @@ package com.lab.rm.engine.deploy.feeders;
 
 import java.util.LinkedHashMap;
 
-import org.lab.rm.engine.model.pj.AttributeType;
-import org.lab.rm.engine.model.pj.Race;
-import org.lab.rm.engine.model.pj.RaceStats;
-import org.lab.rm.engine.model.pj.Resist;
+import org.lab.rm.engine.model.character.AttributeType;
+import org.lab.rm.engine.model.character.Race;
+import org.lab.rm.engine.model.character.RaceStats;
+import org.lab.rm.engine.model.character.Resist;
 
 import net.sf.flatpack.DataSet;
 

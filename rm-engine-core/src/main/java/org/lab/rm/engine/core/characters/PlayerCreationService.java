@@ -1,31 +1,31 @@
-package org.lab.rm.engine.core.pj;
+package org.lab.rm.engine.core.characters;
 
 import java.util.LinkedHashMap;
 
 import javax.inject.Inject;
 
 import org.lab.rm.engine.core.common.RandomService;
-import org.lab.rm.engine.model.pj.Attribute;
-import org.lab.rm.engine.model.pj.AttributeType;
-import org.lab.rm.engine.model.pj.Pj;
-import org.lab.rm.engine.model.pj.Profession;
-import org.lab.rm.engine.model.pj.ProfessionRealm;
-import org.lab.rm.engine.model.pj.Race;
-import org.lab.rm.engine.model.pj.RaceStats;
+import org.lab.rm.engine.model.character.Attribute;
+import org.lab.rm.engine.model.character.AttributeType;
+import org.lab.rm.engine.model.character.PlayerCharacter;
+import org.lab.rm.engine.model.character.Profession;
+import org.lab.rm.engine.model.character.ProfessionRealm;
+import org.lab.rm.engine.model.character.Race;
+import org.lab.rm.engine.model.character.RaceStats;
 import org.lab.rm.engine.model.user.User;
 import org.mongodb.morphia.Datastore;
 
-public class PjCreationService {
+public class PlayerCreationService {
 
 	@Inject
 	private RandomService randomService;
 	@Inject
 	private Datastore datastore;
 
-	public Pj prepare(User user, String name, Race race, Profession profession, ProfessionRealm realm) {
+	public PlayerCharacter prepare(User user, String name, Race race, Profession profession, ProfessionRealm realm) {
 		RaceStats raceStats = datastore.find(RaceStats.class, "race", race.name()).iterator().next();
 
-		Pj pj = new Pj();
+		PlayerCharacter pj = new PlayerCharacter();
 		pj.setOwner(user);
 		pj.setName(name);
 		pj.setRace(race);
@@ -41,7 +41,7 @@ public class PjCreationService {
 		return pj;
 	}
 
-	public void randomizeAttributes(Pj pj) {
+	public void randomizeAttributes(PlayerCharacter pj) {
 		for (Attribute i : pj.getAttributes().values()) {
 			i.setValue(randomService.rand(20, 100));
 		}

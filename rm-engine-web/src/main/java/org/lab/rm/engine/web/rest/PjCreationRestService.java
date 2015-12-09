@@ -10,10 +10,10 @@ import javax.ws.rs.core.MediaType;
 
 import org.apache.commons.lang3.Validate;
 import org.lab.rm.engine.core.common.RandomService;
+import org.lab.rm.engine.model.character.Attribute;
+import org.lab.rm.engine.model.character.AttributeType;
+import org.lab.rm.engine.model.character.PlayerCharacter;
 import org.lab.rm.engine.model.common.Message;
-import org.lab.rm.engine.model.pj.AttributeType;
-import org.lab.rm.engine.model.pj.Attribute;
-import org.lab.rm.engine.model.pj.Pj;
 
 @Path("pj/creation")
 @Produces(MediaType.APPLICATION_JSON)
@@ -23,11 +23,11 @@ public class PjCreationRestService {
 	@Inject
 	private RandomService randomService;
 
-	public Pj prepare() {
+	public PlayerCharacter prepare() {
 		return null;
 	}
 
-	public Message<Pj> randomizeAttributes(Pj pj) {
+	public Message<PlayerCharacter> randomizeAttributes(PlayerCharacter pj) {
 		Validate.notNull(pj.getProfession());
 		Validate.notNull(pj.getRace());
 		pj.setAttributes(new LinkedHashMap<AttributeType, Attribute>());
@@ -36,7 +36,7 @@ public class PjCreationRestService {
 			a.setValue(randomService.rand(20, 100));
 			pj.getAttributes().put(i, a);
 		}
-		return new Message<Pj>().withPayload(pj);
+		return new Message<PlayerCharacter>().withPayload(pj);
 	}
 
 }
