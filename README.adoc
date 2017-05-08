@@ -1,0 +1,5 @@
+= rm-engine
+
+image:https://travis-ci.org/labcabrera/rm-engine.svg?branch=master["Build Status", link="https://travis-ci.org/labcabrera/rm-engine"]
+
+Rolemaster web application engine
