@@ -1,21 +1,19 @@
 package org.lab.rm.engine.test;
 
 import java.util.ArrayList;
-import java.util.LinkedHashMap;
 import java.util.List;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.lab.rm.engine.core.characters.PlayerCreationService;
 import org.lab.rm.engine.core.config.RmEngineCoreConfig;
-import org.lab.rm.engine.core.model.character.AttributeType;
 import org.lab.rm.engine.core.model.character.CharacterContext;
 import org.lab.rm.engine.core.model.character.Gender;
 import org.lab.rm.engine.core.model.character.Inventory;
 import org.lab.rm.engine.core.model.character.PlayerCharacter;
 import org.lab.rm.engine.core.model.character.Profession;
 import org.lab.rm.engine.core.model.character.Race;
-import org.lab.rm.engine.core.model.character.Realm;
 import org.lab.rm.engine.core.model.character.repository.CharacterContextRepository;
 import org.lab.rm.engine.core.model.character.repository.PlayerCharacterRepository;
 import org.lab.rm.engine.core.model.character.repository.ProfessionRepository;
@@ -32,11 +30,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import lombok.extern.slf4j.Slf4j;
-
+@Ignore("mongodb required")
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = RmEngineCoreConfig.class)
-@Slf4j
 public class TestModel {
 
 	@Autowired
@@ -58,26 +54,14 @@ public class TestModel {
 
 	@Test
 	public void test() {
-
 		Player player = playerRepository.findByName("lab.cabrera");
-		if (player == null) {
-			player = playerRepository.insert(new Player("lab.cabrera", "lab.cabrera@gmail.com"));
-			log.info("Inserted new player {}", player);
-		}
-
 		Race raceStats = raceStatsRepository.findByName("COMMON_MAN");
-		if (raceStats == null) {
-			raceStats = new Race();
-			raceStats.setName("COMMON_MAN");
-			raceStats.setAttributes(new LinkedHashMap<>());
-			raceStats.getAttributes().put(AttributeType.ST, 5);
-			raceStats = raceStatsRepository.insert(raceStats);
-			log.debug("Inserted new raceStats {}", raceStats);
-		}
-
 		Profession rogue = professionRepository.findByName("ROGUE");
+		Profession lock = professionRepository.findByName("LOCK");
+		Profession mage = professionRepository.findByName("MAGE");
+		Profession cleric = professionRepository.findByName("CLERIC");
 
-		PlayerCharacter pj01 = creationService.prepare(player, "Kiove", raceStats, rogue, null);
+		PlayerCharacter pj01 = creationService.prepare(player, "Kiove", raceStats, rogue);
 		pj01.setAge(35);
 		pj01.setCurrentLevel(100);
 		pj01.setMaxLevel(100);
@@ -87,13 +71,11 @@ public class TestModel {
 		playerCharacterRepository.insert(pj01);
 
 		List<PlayerCharacter> otherChars = new ArrayList<>();
-		otherChars.add(creationService.prepare(player, "Shiova", raceStats, Profession.LOCK, Realm.ESSENCE));
-		otherChars.add(creationService.prepare(player, "Set", raceStats, Profession.MAGE, Realm.ESSENCE));
-		otherChars.add(creationService.prepare(player, "Zalen", raceStats, Profession.CLERIC, Realm.CHANNELING));
-		otherChars.add(creationService.prepare(player, "Pieterman", raceStats, Profession.MAGE, Realm.ESSENCE));
-		otherChars
-				.add(creationService.prepare(player, "Caticat", raceStats, Profession.GUARDABOSQUES, Realm.CHANNELING));
-		otherChars.add(creationService.prepare(player, "Azania", raceStats, Profession.ROGUE, Realm.MENTALISM));
+		otherChars.add(creationService.prepare(player, "Shiova", raceStats, lock));
+		otherChars.add(creationService.prepare(player, "Set", raceStats, mage));
+		otherChars.add(creationService.prepare(player, "Zalen", raceStats, cleric));
+		otherChars.add(creationService.prepare(player, "Pieterman", raceStats, mage));
+		otherChars.add(creationService.prepare(player, "Azania", raceStats, rogue));
 
 		playerCharacterRepository.save(otherChars);
 
