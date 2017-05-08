@@ -25,11 +25,12 @@ public class PlayerCharacter {
 	@Indexed(unique = true)
 	private String name;
 
+	@Reference
 	private Race race;
 
 	private Profession profession;
 
-	private ProfessionRealm realm;
+	private Realm realm;
 
 	private Integer maxLevel;
 

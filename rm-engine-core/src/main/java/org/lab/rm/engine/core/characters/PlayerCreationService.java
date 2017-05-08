@@ -7,7 +7,7 @@ import org.lab.rm.engine.core.model.character.Attribute;
 import org.lab.rm.engine.core.model.character.AttributeType;
 import org.lab.rm.engine.core.model.character.PlayerCharacter;
 import org.lab.rm.engine.core.model.character.Profession;
-import org.lab.rm.engine.core.model.character.ProfessionRealm;
+import org.lab.rm.engine.core.model.character.Realm;
 import org.lab.rm.engine.core.model.character.Race;
 import org.lab.rm.engine.core.model.character.repository.PlayerCharacterRepository;
 import org.lab.rm.engine.core.model.character.repository.RaceStatsRepository;
@@ -27,7 +27,7 @@ public class PlayerCreationService {
 	private RaceStatsRepository raceStatsRepository;
 
 	public PlayerCharacter prepare(Player user, String name, Race raceStats, Profession profession,
-			ProfessionRealm realm) {
+			Realm realm) {
 		Assert.notNull(user, "Player cant be null");
 		Assert.notNull(raceStats, "RaceStats cant be null");
 		Assert.notNull(profession, "Profession cant be null");

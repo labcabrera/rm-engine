@@ -14,10 +14,11 @@ import org.lab.rm.engine.core.model.character.Gender;
 import org.lab.rm.engine.core.model.character.Inventory;
 import org.lab.rm.engine.core.model.character.PlayerCharacter;
 import org.lab.rm.engine.core.model.character.Profession;
-import org.lab.rm.engine.core.model.character.ProfessionRealm;
 import org.lab.rm.engine.core.model.character.Race;
+import org.lab.rm.engine.core.model.character.Realm;
 import org.lab.rm.engine.core.model.character.repository.CharacterContextRepository;
 import org.lab.rm.engine.core.model.character.repository.PlayerCharacterRepository;
+import org.lab.rm.engine.core.model.character.repository.ProfessionRepository;
 import org.lab.rm.engine.core.model.character.repository.RaceStatsRepository;
 import org.lab.rm.engine.core.model.items.Item;
 import org.lab.rm.engine.core.model.items.Weapon;
@@ -52,6 +53,8 @@ public class TestModel {
 	private CampaignRepository campaignRepository;
 	@Autowired
 	private RaceStatsRepository raceStatsRepository;
+	@Autowired
+	private ProfessionRepository professionRepository;
 
 	@Test
 	public void test() {
@@ -72,8 +75,9 @@ public class TestModel {
 			log.debug("Inserted new raceStats {}", raceStats);
 		}
 
-		PlayerCharacter pj01 = creationService.prepare(player, "Kiove", raceStats, Profession.ROGUE,
-				ProfessionRealm.CHANNELING);
+		Profession rogue = professionRepository.findByName("ROGUE");
+
+		PlayerCharacter pj01 = creationService.prepare(player, "Kiove", raceStats, rogue, null);
 		pj01.setAge(35);
 		pj01.setCurrentLevel(100);
 		pj01.setMaxLevel(100);
@@ -83,16 +87,13 @@ public class TestModel {
 		playerCharacterRepository.insert(pj01);
 
 		List<PlayerCharacter> otherChars = new ArrayList<>();
-		otherChars.add(creationService.prepare(player, "Shiova", raceStats, Profession.LOCK, ProfessionRealm.ESSENCE));
-		otherChars.add(creationService.prepare(player, "Set", raceStats, Profession.MAGE, ProfessionRealm.ESSENCE));
-		otherChars.add(
-				creationService.prepare(player, "Zalen", raceStats, Profession.CLERIC, ProfessionRealm.CHANNELING));
+		otherChars.add(creationService.prepare(player, "Shiova", raceStats, Profession.LOCK, Realm.ESSENCE));
+		otherChars.add(creationService.prepare(player, "Set", raceStats, Profession.MAGE, Realm.ESSENCE));
+		otherChars.add(creationService.prepare(player, "Zalen", raceStats, Profession.CLERIC, Realm.CHANNELING));
+		otherChars.add(creationService.prepare(player, "Pieterman", raceStats, Profession.MAGE, Realm.ESSENCE));
 		otherChars
-				.add(creationService.prepare(player, "Pieterman", raceStats, Profession.MAGE, ProfessionRealm.ESSENCE));
-		otherChars.add(creationService.prepare(player, "Caticat", raceStats, Profession.GUARDABOSQUES,
-				ProfessionRealm.CHANNELING));
-		otherChars
-				.add(creationService.prepare(player, "Azania", raceStats, Profession.ROGUE, ProfessionRealm.MENTALISM));
+				.add(creationService.prepare(player, "Caticat", raceStats, Profession.GUARDABOSQUES, Realm.CHANNELING));
+		otherChars.add(creationService.prepare(player, "Azania", raceStats, Profession.ROGUE, Realm.MENTALISM));
 
 		playerCharacterRepository.save(otherChars);
 
