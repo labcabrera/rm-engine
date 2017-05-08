@@ -7,6 +7,7 @@ import java.util.List;
 import org.lab.rm.engine.core.model.player.Player;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Reference;
+import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import lombok.Data;
@@ -21,6 +22,7 @@ public class PlayerCharacter {
 	@Reference
 	private Player owner;
 
+	@Indexed(unique = true)
 	private String name;
 
 	private Race race;

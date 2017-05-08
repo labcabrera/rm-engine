@@ -9,7 +9,6 @@ import org.lab.rm.engine.core.model.character.PlayerCharacter;
 import org.lab.rm.engine.core.model.character.Profession;
 import org.lab.rm.engine.core.model.character.ProfessionRealm;
 import org.lab.rm.engine.core.model.character.Race;
-import org.lab.rm.engine.core.model.character.RaceStats;
 import org.lab.rm.engine.core.model.character.repository.PlayerCharacterRepository;
 import org.lab.rm.engine.core.model.character.repository.RaceStatsRepository;
 import org.lab.rm.engine.core.model.player.Player;
@@ -27,18 +26,17 @@ public class PlayerCreationService {
 	@Autowired
 	private RaceStatsRepository raceStatsRepository;
 
-	public PlayerCharacter prepare(Player user, String name, Race race, Profession profession, ProfessionRealm realm) {
+	public PlayerCharacter prepare(Player user, String name, Race raceStats, Profession profession,
+			ProfessionRealm realm) {
 		Assert.notNull(user, "Player cant be null");
-		Assert.notNull(race, "Race cant be null");
+		Assert.notNull(raceStats, "RaceStats cant be null");
 		Assert.notNull(profession, "Profession cant be null");
 		Assert.notNull(realm, "Realm cant be null");
-
-		RaceStats raceStats = raceStatsRepository.findByRace(race);
 
 		PlayerCharacter pj = new PlayerCharacter();
 		pj.setOwner(user);
 		pj.setName(name);
-		pj.setRace(race);
+		pj.setRace(raceStats);
 		pj.setProfession(profession);
 		pj.setRealm(realm);
 		pj.setAttributes(new LinkedHashMap<AttributeType, Attribute>());

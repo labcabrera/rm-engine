@@ -1,27 +1,39 @@
 package org.lab.rm.engine.core.model.character;
 
-public enum Race {
+import java.math.BigDecimal;
+import java.util.LinkedHashMap;
 
-	COMMON_MAN,
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-	HIGH_MAN,
+import lombok.Data;
 
-	WOOD_ELF,
+@Document
+@Data
+public class Race {
 
-	GREY_ELF,
+	@Id
+	private String id;
 
-	HIGH_ELF,
+	@Indexed(unique = true)
+	private String name;
 
-	HALF_ELF,
+	private LinkedHashMap<AttributeType, Integer> attributes;
 
-	DWARF,
+	private LinkedHashMap<Resist, Integer> resist;
 
-	HOBBIT,
+	private Integer lostSoulTurns;
 
-	ORK,
+	private Integer modificarDeterioroCaracteristicas;
 
-	URUK,
+	private BigDecimal recuperateMultiplier;
 
-	TROLL;
+	private Integer initialLanguages;
+
+	/** Dado para PV */
+	private Integer pvPoints;
+
+	private Integer maxHitPoints;
 
 }

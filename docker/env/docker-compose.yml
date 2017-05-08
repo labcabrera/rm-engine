@@ -8,4 +8,4 @@ mongodb:
   expose:
     - "27017"
 # command: bash -c " set -o monitor ; curl -o initData.js https://raw.githubusercontent.com/labcabrera/lemur/master/resources/initData.js; mongod --smallfiles & sleep 5; mongo localhost:27017/lemur initData.js; fg"
-  command: bash -c " set -o monitor ; mongod --smallfiles & sleep 10; mongo localhost:27017/rmengine /resources/mongo-init-data.js; fg"
+  command: bash -c " set -o monitor ; mongod --smallfiles & sleep 20; mongo localhost:27017/rmengine /resources/mongo-init-data.js; fg"

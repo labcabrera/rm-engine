@@ -2,7 +2,6 @@ buildscript {
 	ext {
 		springBootVersion = "1.5.2.RELEASE"
 		lombokVersion = "1.16.14"
-		flatpackVersion = "3.1.1"
 	}
 	repositories {
 		mavenLocal()
@@ -29,10 +28,6 @@ subprojects {
 	repositories {
 		mavenLocal()
 		mavenCentral()
-		//TODO
-		maven {
-			url "http://nexus:8080/nexus/content/groups/public/"
-		}
 	}
     dependencies {
     	compile "org.projectlombok:lombok:${lombokVersion}"
@@ -43,26 +38,12 @@ subprojects {
 project(":rm-engine-core") {
 	dependencies {
 		compile("org.springframework.boot:spring-boot-starter-data-mongodb")
-
-		/*
-		compile 'joda-time:joda-time:2.9.1'
-		compile 'com.google.code.gson:gson:2.5'
-		compile 'com.google.inject:guice:4.0'
-		compile 'org.apache.commons:commons-lang3:3.4'
-		compile 'commons-codec:commons-codec:1.10'
-		testCompile 'junit:junit:4.12'
-		*/
 	}
 	bootRepackage {
 		enabled = false
 	}
 }
-project(":rm-engine-deploy") {
-	dependencies {
-		compile project(":rm-engine-core")
-		compile "net.sf.flatpack:flatpack:${flatpackVersion}"
-	}
-}
+
 project(":rm-engine-api") {
 	dependencies {
 		compile project(":rm-engine-core")

@@ -1,4 +1,3 @@
 include ":rm-engine-core",
-  ":rm-engine-deploy",
   ":rm-engine-api",
   ":rm-engine-web"

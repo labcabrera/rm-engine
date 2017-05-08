@@ -1,13 +1,14 @@
 package org.lab.rm.engine.test;
 
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
 
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.lab.rm.engine.core.characters.PlayerCreationService;
 import org.lab.rm.engine.core.config.RmEngineCoreConfig;
+import org.lab.rm.engine.core.model.character.AttributeType;
 import org.lab.rm.engine.core.model.character.CharacterContext;
 import org.lab.rm.engine.core.model.character.Gender;
 import org.lab.rm.engine.core.model.character.Inventory;
@@ -17,6 +18,7 @@ import org.lab.rm.engine.core.model.character.ProfessionRealm;
 import org.lab.rm.engine.core.model.character.Race;
 import org.lab.rm.engine.core.model.character.repository.CharacterContextRepository;
 import org.lab.rm.engine.core.model.character.repository.PlayerCharacterRepository;
+import org.lab.rm.engine.core.model.character.repository.RaceStatsRepository;
 import org.lab.rm.engine.core.model.items.Item;
 import org.lab.rm.engine.core.model.items.Weapon;
 import org.lab.rm.engine.core.model.items.WeaponType;
@@ -29,9 +31,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-@Ignore("refactoring")
+import lombok.extern.slf4j.Slf4j;
+
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = RmEngineCoreConfig.class)
+@Slf4j
 public class TestModel {
 
 	@Autowired
@@ -46,13 +50,29 @@ public class TestModel {
 	private CharacterContextRepository characterContextRepository;
 	@Autowired
 	private CampaignRepository campaignRepository;
+	@Autowired
+	private RaceStatsRepository raceStatsRepository;
 
 	@Test
 	public void test() {
 
 		Player player = playerRepository.findByName("lab.cabrera");
+		if (player == null) {
+			player = playerRepository.insert(new Player("lab.cabrera", "lab.cabrera@gmail.com"));
+			log.info("Inserted new player {}", player);
+		}
 
-		PlayerCharacter pj01 = creationService.prepare(player, "Kiove", Race.COMMON_MAN, Profession.ROGUE,
+		Race raceStats = raceStatsRepository.findByName("COMMON_MAN");
+		if (raceStats == null) {
+			raceStats = new Race();
+			raceStats.setName("COMMON_MAN");
+			raceStats.setAttributes(new LinkedHashMap<>());
+			raceStats.getAttributes().put(AttributeType.ST, 5);
+			raceStats = raceStatsRepository.insert(raceStats);
+			log.debug("Inserted new raceStats {}", raceStats);
+		}
+
+		PlayerCharacter pj01 = creationService.prepare(player, "Kiove", raceStats, Profession.ROGUE,
 				ProfessionRealm.CHANNELING);
 		pj01.setAge(35);
 		pj01.setCurrentLevel(100);
@@ -60,22 +80,28 @@ public class TestModel {
 		pj01.setXp(42384723L);
 		pj01.setMaxHitPoints(245);
 		pj01.setGender(Gender.FEMALE);
-		playerCharacterRepository.save(pj01);
+		playerCharacterRepository.insert(pj01);
 
 		List<PlayerCharacter> otherChars = new ArrayList<>();
+		otherChars.add(creationService.prepare(player, "Shiova", raceStats, Profession.LOCK, ProfessionRealm.ESSENCE));
+		otherChars.add(creationService.prepare(player, "Set", raceStats, Profession.MAGE, ProfessionRealm.ESSENCE));
 		otherChars.add(
-				creationService.prepare(player, "Shiova", Race.HALF_ELF, Profession.LOCK, ProfessionRealm.ESSENCE));
-		otherChars.add(creationService.prepare(player, "Set", Race.GREY_ELF, Profession.MAGE, ProfessionRealm.ESSENCE));
-		otherChars.add(creationService.prepare(player, "Zalen", Race.COMMON_MAN, Profession.CLERIC,
+				creationService.prepare(player, "Zalen", raceStats, Profession.CLERIC, ProfessionRealm.CHANNELING));
+		otherChars
+				.add(creationService.prepare(player, "Pieterman", raceStats, Profession.MAGE, ProfessionRealm.ESSENCE));
+		otherChars.add(creationService.prepare(player, "Caticat", raceStats, Profession.GUARDABOSQUES,
 				ProfessionRealm.CHANNELING));
-		otherChars.add(
-				creationService.prepare(player, "Pieterman", Race.GREY_ELF, Profession.MAGE, ProfessionRealm.ESSENCE));
-		otherChars.add(creationService.prepare(player, "Caticat", Race.GREY_ELF, Profession.GUARDABOSQUES,
-				ProfessionRealm.CHANNELING));
-		otherChars.add(
-				creationService.prepare(player, "Azania", Race.GREY_ELF, Profession.ROGUE, ProfessionRealm.MENTALISM));
+		otherChars
+				.add(creationService.prepare(player, "Azania", raceStats, Profession.ROGUE, ProfessionRealm.MENTALISM));
+
+		playerCharacterRepository.save(otherChars);
 
 		WeaponType bastardSword = weaponTypeRepository.findByName("Bastard Sword");
+		if (bastardSword == null) {
+			bastardSword = new WeaponType();
+			bastardSword.setName("Bastard Sword");
+			bastardSword = weaponTypeRepository.insert(bastardSword);
+		}
 
 		CharacterContext context01 = new CharacterContext();
 		context01.setPj(pj01);
