@@ -2,28 +2,38 @@ package org.lab.rm.engine.core.characters;
 
 import java.util.LinkedHashMap;
 
-import javax.inject.Inject;
-
 import org.lab.rm.engine.core.common.RandomService;
-import org.lab.rm.engine.model.character.Attribute;
-import org.lab.rm.engine.model.character.AttributeType;
-import org.lab.rm.engine.model.character.PlayerCharacter;
-import org.lab.rm.engine.model.character.Profession;
-import org.lab.rm.engine.model.character.ProfessionRealm;
-import org.lab.rm.engine.model.character.Race;
-import org.lab.rm.engine.model.character.RaceStats;
-import org.lab.rm.engine.model.user.User;
-import org.mongodb.morphia.Datastore;
+import org.lab.rm.engine.core.model.character.Attribute;
+import org.lab.rm.engine.core.model.character.AttributeType;
+import org.lab.rm.engine.core.model.character.PlayerCharacter;
+import org.lab.rm.engine.core.model.character.Profession;
+import org.lab.rm.engine.core.model.character.ProfessionRealm;
+import org.lab.rm.engine.core.model.character.Race;
+import org.lab.rm.engine.core.model.character.RaceStats;
+import org.lab.rm.engine.core.model.character.repository.PlayerCharacterRepository;
+import org.lab.rm.engine.core.model.character.repository.RaceStatsRepository;
+import org.lab.rm.engine.core.model.player.Player;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import org.springframework.util.Assert;
 
+@Component
 public class PlayerCreationService {
 
-	@Inject
+	@Autowired
 	private RandomService randomService;
-	@Inject
-	private Datastore datastore;
+	@Autowired
+	private PlayerCharacterRepository playerCharacterRepository;
+	@Autowired
+	private RaceStatsRepository raceStatsRepository;
 
-	public PlayerCharacter prepare(User user, String name, Race race, Profession profession, ProfessionRealm realm) {
-		RaceStats raceStats = datastore.find(RaceStats.class, "race", race.name()).iterator().next();
+	public PlayerCharacter prepare(Player user, String name, Race race, Profession profession, ProfessionRealm realm) {
+		Assert.notNull(user, "Player cant be null");
+		Assert.notNull(race, "Race cant be null");
+		Assert.notNull(profession, "Profession cant be null");
+		Assert.notNull(realm, "Realm cant be null");
+
+		RaceStats raceStats = raceStatsRepository.findByRace(race);
 
 		PlayerCharacter pj = new PlayerCharacter();
 		pj.setOwner(user);

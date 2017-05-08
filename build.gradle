@@ -1,21 +1,87 @@
+buildscript {
+	ext {
+		springBootVersion = "1.5.2.RELEASE"
+		lombokVersion = "1.16.14"
+		flatpackVersion = "3.1.1"
+	}
+	repositories {
+		mavenLocal()
+		mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+	}
+}
 
 subprojects {
-    apply plugin: 'java'
-    apply plugin: 'eclipse-wtp'
+    apply plugin: "java"
+	apply plugin: "org.springframework.boot"
+	apply plugin: "eclipse"
 
-    repositories {
-       mavenCentral()
-    }
+    version = version
+    group = "org.lab.rm.engine"
 
+    compileJava {
+			sourceCompatibility = 1.8
+			targetCompatibility = 1.8
+			options.encoding = "UTF-8"
+	}
+	repositories {
+		mavenLocal()
+		mavenCentral()
+		//TODO
+		maven {
+			url "http://nexus:8080/nexus/content/groups/public/"
+		}
+	}
     dependencies {
-        compile 'ch.qos.logback:logback-classic:1.1.3'
-        testCompile 'junit:junit:4.12'
+    	compile "org.projectlombok:lombok:${lombokVersion}"
+    	testCompile "org.springframework.boot:spring-boot-starter-test"
     }
+}
 
-    version = '0.0.1'
-    group = 'org.lab.rm.engine'
+project(":rm-engine-core") {
+	dependencies {
+		compile("org.springframework.boot:spring-boot-starter-data-mongodb")
 
-    jar {
-        manifest.attributes provider: 'gradle'
-    }
+		/*
+		compile 'joda-time:joda-time:2.9.1'
+		compile 'com.google.code.gson:gson:2.5'
+		compile 'com.google.inject:guice:4.0'
+		compile 'org.apache.commons:commons-lang3:3.4'
+		compile 'commons-codec:commons-codec:1.10'
+		testCompile 'junit:junit:4.12'
+		*/
+	}
+	bootRepackage {
+		enabled = false
+	}
+}
+project(":rm-engine-deploy") {
+	dependencies {
+		compile project(":rm-engine-core")
+		compile "net.sf.flatpack:flatpack:${flatpackVersion}"
+	}
+}
+project(":rm-engine-api") {
+	dependencies {
+		compile project(":rm-engine-core")
+		compile "org.springframework.boot:spring-boot-starter"
+		compile "org.springframework.boot:spring-boot-starter-web"
+		compile "org.springframework.boot:spring-boot-starter-actuator"
+	}
+	bootRepackage {
+		enabled = false
+	}
+}
+
+project(":rm-engine-web") {
+	dependencies {
+		compile "org.springframework.boot:spring-boot-starter"
+		compile "org.springframework.boot:spring-boot-starter-web"
+		compile "org.springframework.boot:spring-boot-starter-actuator"
+	}
+	bootRepackage {
+		enabled = false
+	}
 }

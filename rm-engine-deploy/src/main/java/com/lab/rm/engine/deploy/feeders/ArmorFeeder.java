@@ -1,10 +1,10 @@
 package com.lab.rm.engine.deploy.feeders;
 
-import org.lab.rm.engine.model.items.ArmorType;
+import org.lab.rm.engine.core.model.items.ArmorType;
 
 import net.sf.flatpack.DataSet;
 
-public class ArmorFeeder extends CsvFeeder<ArmorType> {
+public class ArmorFeeder extends CsvFeeder<ArmorType, String> {
 
 	@Override
 	protected String getResourceName() {

@@ -2,9 +2,9 @@ package org.lab.rm.engine.core.common;
 
 import java.util.Random;
 
-import javax.inject.Singleton;
+import org.springframework.stereotype.Component;
 
-@Singleton
+@Component
 public class RandomService {
 
 	private final Random random;

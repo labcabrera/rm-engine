@@ -2,14 +2,14 @@ package com.lab.rm.engine.deploy.feeders;
 
 import java.util.LinkedHashMap;
 
-import org.lab.rm.engine.model.character.AttributeType;
-import org.lab.rm.engine.model.character.Race;
-import org.lab.rm.engine.model.character.RaceStats;
-import org.lab.rm.engine.model.character.Resist;
+import org.lab.rm.engine.core.model.character.AttributeType;
+import org.lab.rm.engine.core.model.character.Race;
+import org.lab.rm.engine.core.model.character.RaceStats;
+import org.lab.rm.engine.core.model.character.Resist;
 
 import net.sf.flatpack.DataSet;
 
-public class RaceStatsFeeder extends CsvFeeder<RaceStats> {
+public class RaceStatsFeeder extends CsvFeeder<RaceStats, String> {
 
 	@Override
 	protected String getResourceName() {

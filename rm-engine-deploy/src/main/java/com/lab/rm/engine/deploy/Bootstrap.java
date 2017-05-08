@@ -1,21 +1,38 @@
 package com.lab.rm.engine.deploy;
 
-import org.lab.rm.engine.core.guice.CoreModule;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.google.inject.Guice;
-import com.google.inject.Injector;
 import com.lab.rm.engine.deploy.feeders.ArmorFeeder;
 import com.lab.rm.engine.deploy.feeders.RaceStatsFeeder;
 import com.lab.rm.engine.deploy.feeders.UserFeeder;
 import com.lab.rm.engine.deploy.feeders.WeaponFeeder;
 
-public class Bootstrap {
+@SpringBootApplication
+public class Bootstrap implements CommandLineRunner {
+
+	@Autowired
+	private UserFeeder userFeeder;
+	@Autowired
+	private RaceStatsFeeder raceStatsFeeder;
+	@Autowired
+	private WeaponFeeder weaponFeeder;
+	@Autowired
+	private ArmorFeeder armorFeeder;
 
 	public static void main(String[] args) {
-		Injector injector = Guice.createInjector(new CoreModule());
-		injector.getInstance(UserFeeder.class).run();
-		injector.getInstance(RaceStatsFeeder.class).run();
-		injector.getInstance(WeaponFeeder.class).run();
-		injector.getInstance(ArmorFeeder.class).run();
+		SpringApplication.run(Bootstrap.class, args);
+
+	}
+
+	//TODO create feeder annotation and get all items annnotated
+	@Override
+	public void run(String... args) throws Exception {
+		userFeeder.run();
+		raceStatsFeeder.run();
+		weaponFeeder.run();
+		armorFeeder.run();
 	}
 }

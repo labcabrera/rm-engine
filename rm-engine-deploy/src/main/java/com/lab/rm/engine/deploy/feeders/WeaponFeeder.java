@@ -1,10 +1,10 @@
 package com.lab.rm.engine.deploy.feeders;
 
-import org.lab.rm.engine.model.items.WeaponType;
+import org.lab.rm.engine.core.model.items.WeaponType;
 
 import net.sf.flatpack.DataSet;
 
-public class WeaponFeeder extends CsvFeeder<WeaponType> {
+public class WeaponFeeder extends CsvFeeder<WeaponType, String> {
 
 	@Override
 	protected String getResourceName() {

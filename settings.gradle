@@ -1,1 +1,4 @@
-include "rm-engine-model", "rm-engine-core", "rm-engine-deploy", "rm-engine-web"
+include ":rm-engine-core",
+  ":rm-engine-deploy",
+  ":rm-engine-api",
+  ":rm-engine-web"
