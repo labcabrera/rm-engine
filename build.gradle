@@ -2,6 +2,7 @@ buildscript {
 	ext {
 		springBootVersion = "1.5.2.RELEASE"
 		lombokVersion = "1.16.14"
+		springfoxSwaggerVersion = "2.6.1"
 	}
 	repositories {
 		mavenLocal()
@@ -50,6 +51,8 @@ project(":rm-engine-api") {
 		compile "org.springframework.boot:spring-boot-starter"
 		compile "org.springframework.boot:spring-boot-starter-web"
 		compile "org.springframework.boot:spring-boot-starter-actuator"
+		compile("io.springfox:springfox-swagger-ui:${springfoxSwaggerVersion}")
+		compile("io.springfox:springfox-swagger2:${springfoxSwaggerVersion}")
 	}
 	bootRepackage {
 		enabled = false

@@ -1,0 +1,15 @@
+server:
+  port: 8081
+
+management:
+  context-path: /actuator
+  security.enabled: false
+
+logging:
+  level.org: INFO
+
+spring:
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/rmengine
+  
