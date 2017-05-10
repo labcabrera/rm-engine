@@ -13,7 +13,7 @@ import io.swagger.annotations.ApiParam;
 
 @RestController
 @RequestMapping("/api/rand")
-@Api(tags = { "Random services" })
+@Api(tags = { "Random operations" })
 public class RandomController {
 
 	private final Random random;
@@ -29,7 +29,7 @@ public class RandomController {
 		return 1 + random.nextInt(max);
 	}
 
-	@RequestMapping(value = "/c/{count}/d{max}", method = RequestMethod.GET)
+	@RequestMapping(value = "/c{count}/d{max}", method = RequestMethod.GET)
 	@ApiOperation(value = "Random integers", notes = "Generates N random integer values.", response = Integer.class)
 	public Integer[] nd( //
 			@PathVariable("count") @ApiParam(name = "count", value = "Number of values") Integer count,

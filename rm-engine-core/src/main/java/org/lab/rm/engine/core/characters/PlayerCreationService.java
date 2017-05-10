@@ -27,22 +27,22 @@ public class PlayerCreationService {
 		return prepare(user, name, raceStats, profession, profession.getRealms().iterator().next());
 	}
 
-	public PlayerCharacter prepare(Player user, String name, Race raceStats, Profession profession, Realm realm) {
+	public PlayerCharacter prepare(Player user, String name, Race race, Profession profession, Realm realm) {
 		Assert.notNull(user, "Player cant be null");
-		Assert.notNull(raceStats, "RaceStats cant be null");
+		Assert.notNull(race, "RaceStats cant be null");
 		Assert.notNull(profession, "Profession cant be null");
 		Assert.notNull(realm, "Realm cant be null");
 
 		PlayerCharacter pj = new PlayerCharacter();
 		pj.setOwner(user);
 		pj.setName(name);
-		pj.setRace(raceStats);
+		pj.setRace(race);
 		pj.setProfession(profession);
 		pj.setRealm(realm);
 		pj.setAttributes(new LinkedHashMap<AttributeType, Attribute>());
 		for (AttributeType i : AttributeType.values()) {
 			Attribute a = new Attribute();
-			a.setRacialBonus(raceStats.getAttributes().get(i));
+			a.setRacialBonus(race.getAttributes().get(i));
 			pj.getAttributes().put(i, a);
 		}
 		randomizeAttributes(pj);

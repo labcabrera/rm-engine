@@ -3,7 +3,6 @@ package org.lab.rm.engine.test;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.lab.rm.engine.core.characters.PlayerCreationService;
@@ -30,7 +29,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-@Ignore("mongodb required")
+//@Ignore("mongodb required")
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = RmEngineCoreConfig.class)
 public class TestModel {
@@ -55,27 +54,28 @@ public class TestModel {
 	@Test
 	public void test() {
 		Player player = playerRepository.findByName("lab.cabrera");
-		Race raceStats = raceStatsRepository.findByName("COMMON_MAN");
+		Race commonMan = raceStatsRepository.findByName("COMMON_MAN");
 		Profession rogue = professionRepository.findByName("ROGUE");
 		Profession lock = professionRepository.findByName("LOCK");
 		Profession mage = professionRepository.findByName("MAGE");
 		Profession cleric = professionRepository.findByName("CLERIC");
 
-		PlayerCharacter pj01 = creationService.prepare(player, "Kiove", raceStats, rogue);
+		PlayerCharacter pj01 = creationService.prepare(player, "Kiove", commonMan, rogue);
 		pj01.setAge(35);
 		pj01.setCurrentLevel(100);
 		pj01.setMaxLevel(100);
 		pj01.setXp(42384723L);
 		pj01.setMaxHitPoints(245);
 		pj01.setGender(Gender.FEMALE);
-		playerCharacterRepository.insert(pj01);
+		// playerCharacterRepository.insert(pj01);
+		playerCharacterRepository.save(pj01);
 
 		List<PlayerCharacter> otherChars = new ArrayList<>();
-		otherChars.add(creationService.prepare(player, "Shiova", raceStats, lock));
-		otherChars.add(creationService.prepare(player, "Set", raceStats, mage));
-		otherChars.add(creationService.prepare(player, "Zalen", raceStats, cleric));
-		otherChars.add(creationService.prepare(player, "Pieterman", raceStats, mage));
-		otherChars.add(creationService.prepare(player, "Azania", raceStats, rogue));
+		otherChars.add(creationService.prepare(player, "Shiova", commonMan, lock));
+		otherChars.add(creationService.prepare(player, "Set", commonMan, mage));
+		otherChars.add(creationService.prepare(player, "Zalen", commonMan, cleric));
+		otherChars.add(creationService.prepare(player, "Pieterman", commonMan, mage));
+		otherChars.add(creationService.prepare(player, "Azania", commonMan, rogue));
 
 		playerCharacterRepository.save(otherChars);
 
