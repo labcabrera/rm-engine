@@ -7,6 +7,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.lab.rm.engine.core.characters.PlayerCreationService;
 import org.lab.rm.engine.core.config.RmEngineCoreConfig;
+import org.lab.rm.engine.core.model.character.CharacterCommonData;
 import org.lab.rm.engine.core.model.character.CharacterContext;
 import org.lab.rm.engine.core.model.character.Gender;
 import org.lab.rm.engine.core.model.character.Inventory;
@@ -61,13 +62,9 @@ public class TestModel {
 		Profession cleric = professionRepository.findByName("CLERIC");
 
 		PlayerCharacter pj01 = creationService.prepare(player, "Kiove", commonMan, rogue);
-		pj01.setAge(35);
-		pj01.setCurrentLevel(100);
-		pj01.setMaxLevel(100);
-		pj01.setXp(42384723L);
-		pj01.setMaxHitPoints(245);
-		pj01.setGender(Gender.FEMALE);
-		// playerCharacterRepository.insert(pj01);
+		pj01.setCommonData(new CharacterCommonData());
+		pj01.getCommonData().setGender(Gender.FEMALE);
+		pj01.getCommonData().setAge(36);
 		playerCharacterRepository.save(pj01);
 
 		List<PlayerCharacter> otherChars = new ArrayList<>();

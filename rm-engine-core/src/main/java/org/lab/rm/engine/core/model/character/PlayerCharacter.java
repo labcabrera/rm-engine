@@ -1,13 +1,11 @@
 package org.lab.rm.engine.core.model.character;
 
-import java.math.BigDecimal;
 import java.util.LinkedHashMap;
 import java.util.List;
 
 import org.lab.rm.engine.core.model.player.Player;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Reference;
-import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import lombok.Data;
@@ -22,35 +20,25 @@ public class PlayerCharacter {
 	@Reference
 	private Player owner;
 
-	@Indexed(unique = true)
+	// @Indexed(unique = true)
 	private String name;
 
 	@Reference
 	private Race race;
 
+	@Reference
 	private Profession profession;
 
+	@Reference
 	private Realm realm;
 
-	private Integer maxLevel;
-
-	private Integer currentLevel;
-
-	private Long xp;
-
-	private Integer maxHitPoints;
-
-	private Gender gender;
-
 	private LinkedHashMap<AttributeType, Attribute> attributes;
-
 	private List<CharacterSkill> skills;
 
-	private Integer age;
+	private CharacterHitPointsInfo hitPointsInfo;
+	private CharacterExperience experience;
+	private CharacterCommonData commonData;
+	private CharacterMovementInfo movementInfo;
 
-	private BigDecimal weight;
-
-	private BigDecimal height;
-
-	private String notes;
+	private Integer maxHitPoints;
 }
