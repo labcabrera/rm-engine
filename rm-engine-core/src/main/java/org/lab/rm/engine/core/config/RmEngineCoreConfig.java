@@ -8,6 +8,7 @@ import org.springframework.data.mongodb.repository.config.EnableMongoRepositorie
 @Configuration
 @EnableAutoConfiguration
 @EnableMongoRepositories(basePackages = "org.lab.rm.engine.model")
+// TODO
 @ComponentScan(basePackages = "org.lab.rm.engine.core")
 public class RmEngineCoreConfig {
 
