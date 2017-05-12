@@ -57,16 +57,13 @@ project(":rm-engine-core") {
 	}
 }
 
-project(":rm-engine-api") {
+configure(subprojects.findAll {it.name.startsWith("rm-engine-ms")}) {
 	dependencies {
 		compile project(":rm-engine-core")
 		compile "org.springframework.boot:spring-boot-starter"
 		compile "org.springframework.boot:spring-boot-starter-web"
 		compile "org.springframework.boot:spring-boot-starter-actuator"
-		compile("io.springfox:springfox-swagger-ui:${springfoxSwaggerVersion}")
-	}
-	bootRepackage {
-		enabled = false
+		compile("io.springfox:springfox-swagger-ui:${springfoxSwaggerVersion}")		
 	}
 }
 

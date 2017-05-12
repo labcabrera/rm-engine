@@ -1,4 +1,8 @@
-include ":rm-engine-model",
-  ":rm-engine-core",
-  ":rm-engine-api",
-  ":rm-engine-web"
+include ":rm-engine-model"
+include ":rm-engine-core"
+include ":rm-engine-ms-common"
+include ":rm-engine-ms-character"
+include ":rm-engine-ms-character-creation"
+include ":rm-engine-ms-movement"
+include ":rm-engine-ms-combat"
+include ":rm-engine-web"

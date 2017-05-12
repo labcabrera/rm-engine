@@ -1,4 +1,4 @@
-package org.lab.rm.engine.api.controllers;
+package org.lab.rm.engine.ms.common.controller;
 
 import java.util.Random;
 
@@ -14,11 +14,11 @@ import io.swagger.annotations.ApiParam;
 @RestController
 @RequestMapping("/api/rand")
 @Api(tags = { "Random operations" })
-public class RandomController {
+public class RandController {
 
 	private final Random random;
 
-	public RandomController() {
+	public RandController() {
 		random = new Random();
 	}
 

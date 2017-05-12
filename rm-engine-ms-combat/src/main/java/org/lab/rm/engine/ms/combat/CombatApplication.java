@@ -1,4 +1,4 @@
-package org.lab.rm.engine.api;
+package org.lab.rm.engine.ms.combat;
 
 import org.lab.rm.engine.core.config.RmEngineCoreConfig;
 import org.springframework.boot.SpringApplication;
@@ -12,10 +12,10 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableAutoConfiguration
 @EnableSwagger2
 @Import(RmEngineCoreConfig.class)
-public class RmEngineApiApplication {
+public class CombatApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(RmEngineApiApplication.class, args);
+		SpringApplication.run(CombatApplication.class, args);
 	}
 
 }
