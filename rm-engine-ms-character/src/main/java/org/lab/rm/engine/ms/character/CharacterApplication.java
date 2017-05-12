@@ -1,4 +1,4 @@
-package org.lab.rm.engine.ms.character.creation;
+package org.lab.rm.engine.ms.character;
 
 import org.lab.rm.engine.core.config.RmEngineCoreConfig;
 import org.springframework.boot.SpringApplication;
@@ -12,10 +12,10 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableAutoConfiguration
 @EnableSwagger2
 @Import(RmEngineCoreConfig.class)
-public class CharacterCreationApplication {
+public class CharacterApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(CharacterCreationApplication.class, args);
+		SpringApplication.run(CharacterApplication.class, args);
 	}
 
 }
