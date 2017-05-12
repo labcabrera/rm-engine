@@ -36,10 +36,19 @@ subprojects {
     }
 }
 
-project(":rm-engine-core") {
+project(":rm-engine-model") {
 	dependencies {
 		compile("org.springframework.boot:spring-boot-starter-data-mongodb")
 		compile("io.springfox:springfox-swagger2:${springfoxSwaggerVersion}")
+	}
+	bootRepackage {
+		enabled = false
+	}
+}
+
+project(":rm-engine-core") {
+	dependencies {
+		compile(project(":rm-engine-model"))
 	}
 	bootRepackage {
 		enabled = false
