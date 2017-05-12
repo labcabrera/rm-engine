@@ -3,7 +3,6 @@ package org.lab.rm.engine.core.test;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.lab.rm.engine.core.characters.PlayerCreationService;
@@ -31,10 +30,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-@Ignore("mongodb required")
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = RmEngineCoreConfig.class)
-public class TestModel {
+public class BasicModelTest {
 
 	@Autowired
 	private PlayerCreationService creationService;
