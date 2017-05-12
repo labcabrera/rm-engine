@@ -3,6 +3,7 @@ buildscript {
 		springBootVersion = "1.5.2.RELEASE"
 		lombokVersion = "1.16.14"
 		springfoxSwaggerVersion = "2.6.1"
+		springCloudZuulVersion = "1.2.5.RELEASE"
 		bootstrapVersion = "3.3.7"
   		angularjsVersion = "1.6.4"
 	}
@@ -73,6 +74,7 @@ project(":rm-engine-web") {
 		compile "org.springframework.boot:spring-boot-starter-web"
 		compile "org.springframework.boot:spring-boot-starter-thymeleaf"
 		compile "org.springframework.boot:spring-boot-starter-actuator"
+		compile "org.springframework.cloud:spring-cloud-starter-zuul:${springCloudZuulVersion}"
 		compile "org.webjars:bootstrap:${bootstrapVersion}"
 		compile "org.webjars:angularjs:${angularjsVersion}"
 	}

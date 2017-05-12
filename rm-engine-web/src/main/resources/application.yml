@@ -1,7 +1,17 @@
 server:
+  port: 8080
   tomcat:
       uri-encoding: UTF-8
 
 management:
   context-path: /actuator
   security.enabled: false
+
+zuul:
+  routes:
+    common:
+      path: /api/common/**
+      url: http://localhost:8085/
+    movement:
+      path: /api/movement/**
+      url: http://localhost:8086/

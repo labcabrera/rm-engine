@@ -5,6 +5,7 @@ import java.util.Random;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import io.swagger.annotations.Api;
@@ -12,7 +13,7 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 
 @RestController
-@RequestMapping("/api/rand")
+@RequestMapping("/random")
 @Api(tags = { "Random operations" })
 public class RandController {
 
@@ -24,6 +25,7 @@ public class RandController {
 
 	@RequestMapping(value = "/d{max}", method = RequestMethod.GET)
 	@ApiOperation(value = "Random integer", notes = "Generates a random integer value.", response = Integer.class)
+	@ResponseBody
 	public Integer d(
 			@PathVariable("max") @ApiParam(name = "max", value = "Generates a radom integer between 1 and max") Integer max) {
 		return 1 + random.nextInt(max);

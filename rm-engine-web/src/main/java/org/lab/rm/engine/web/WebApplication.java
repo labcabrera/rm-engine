@@ -3,12 +3,14 @@ package org.lab.rm.engine.web;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
 
 @SpringBootApplication
 @EnableAutoConfiguration
-public class DemoApplication {
+@EnableZuulProxy
+public class WebApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(DemoApplication.class, args);
+		SpringApplication.run(WebApplication.class, args);
 	}
 }
