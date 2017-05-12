@@ -1,4 +1,4 @@
-package org.lab.rm.engine.test;
+package org.lab.rm.engine.core.test;
 
 import java.util.HashMap;
 
