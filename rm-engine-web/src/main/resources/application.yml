@@ -11,7 +11,19 @@ zuul:
   routes:
     common:
       path: /api/common/**
-      url: http://localhost:8085/
+      url: http://localhost:8090/
+    character:
+      path: /api/character/**
+      url: http://localhost:8091/
+    creation:
+      path: /api/creation/**
+      url: http://localhost:8092/
     movement:
       path: /api/movement/**
-      url: http://localhost:8086/
+      url: http://localhost:8093/
+    combat:
+      path: /api/combat/**
+      url: http://localhost:8094/
+    campaign:
+      path: /api/character/**
+      url: http://localhost:8095/

@@ -1,6 +1,7 @@
 include ":rm-engine-model"
 include ":rm-engine-core"
 include ":rm-engine-ms-common"
+include ":rm-engine-ms-campaign"
 include ":rm-engine-ms-character"
 include ":rm-engine-ms-creation"
 include ":rm-engine-ms-movement"
