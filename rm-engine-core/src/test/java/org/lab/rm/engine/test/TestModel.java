@@ -3,18 +3,17 @@ package org.lab.rm.engine.test;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.lab.rm.engine.core.characters.PlayerCreationService;
 import org.lab.rm.engine.core.config.RmEngineCoreConfig;
-import org.lab.rm.engine.model.character.CharacterCommonData;
 import org.lab.rm.engine.model.character.CharacterContext;
 import org.lab.rm.engine.model.character.Gender;
 import org.lab.rm.engine.model.character.Inventory;
 import org.lab.rm.engine.model.character.PlayerCharacter;
 import org.lab.rm.engine.model.character.Profession;
 import org.lab.rm.engine.model.character.Race;
+import org.lab.rm.engine.model.character.ext.CharacterCommonData;
 import org.lab.rm.engine.model.character.repository.CharacterContextRepository;
 import org.lab.rm.engine.model.character.repository.PlayerCharacterRepository;
 import org.lab.rm.engine.model.character.repository.ProfessionRepository;
@@ -62,11 +61,14 @@ public class TestModel {
 		Profession mage = professionRepository.findByName("MAGE");
 		Profession cleric = professionRepository.findByName("CLERIC");
 
-		PlayerCharacter pj01 = creationService.prepare(player, "Kiove", commonMan, rogue);
-		pj01.setCommonData(new CharacterCommonData());
-		pj01.getCommonData().setGender(Gender.FEMALE);
-		pj01.getCommonData().setAge(36);
-		playerCharacterRepository.save(pj01);
+		PlayerCharacter kiove = creationService.prepare(player, "Kiove", commonMan, rogue);
+
+		CharacterCommonData kioveCommonData = new CharacterCommonData();
+		kioveCommonData.setAge(36);
+		kioveCommonData.setGender(Gender.FEMALE);
+		kiove.addModule(kioveCommonData);
+
+		playerCharacterRepository.save(kiove);
 
 		List<PlayerCharacter> otherChars = new ArrayList<>();
 		otherChars.add(creationService.prepare(player, "Shiova", commonMan, lock));
@@ -85,14 +87,14 @@ public class TestModel {
 		}
 
 		CharacterContext context01 = new CharacterContext();
-		context01.setPj(pj01);
+		context01.setPj(kiove);
 		context01.setInventory(new Inventory());
 		context01.getInventory().setFirstHandEquipedWeapon(new Weapon(bastardSword));
 		context01.getInventory().setBags(new ArrayList<Item>());
 		context01.getInventory().getBags().add(new Item("Silver coin", 23));
 		context01.getInventory().getBags().add(new Item("Copper coin", 33));
 		context01.getInventory().getBags().add(new Item("Gold coin", 33));
-		context01.setCurrentHitPoints(pj01.getMaxHitPoints());
+		context01.setCurrentHitPoints(kiove.getMaxHitPoints());
 		characterContextRepository.save(context01);
 
 		List<CharacterContext> otherContext = new ArrayList<>();
