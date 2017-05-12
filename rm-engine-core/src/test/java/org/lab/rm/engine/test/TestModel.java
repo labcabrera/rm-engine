@@ -13,7 +13,7 @@ import org.lab.rm.engine.model.character.Inventory;
 import org.lab.rm.engine.model.character.PlayerCharacter;
 import org.lab.rm.engine.model.character.Profession;
 import org.lab.rm.engine.model.character.Race;
-import org.lab.rm.engine.model.character.ext.CharacterCommonData;
+import org.lab.rm.engine.model.character.extension.CharacterCommonData;
 import org.lab.rm.engine.model.character.repository.CharacterContextRepository;
 import org.lab.rm.engine.model.character.repository.PlayerCharacterRepository;
 import org.lab.rm.engine.model.character.repository.ProfessionRepository;
@@ -94,7 +94,6 @@ public class TestModel {
 		context01.getInventory().getBags().add(new Item("Silver coin", 23));
 		context01.getInventory().getBags().add(new Item("Copper coin", 33));
 		context01.getInventory().getBags().add(new Item("Gold coin", 33));
-		context01.setCurrentHitPoints(kiove.getMaxHitPoints());
 		characterContextRepository.save(context01);
 
 		List<CharacterContext> otherContext = new ArrayList<>();

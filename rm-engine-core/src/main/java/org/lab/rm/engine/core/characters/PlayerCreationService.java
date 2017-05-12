@@ -9,6 +9,7 @@ import org.lab.rm.engine.model.character.PlayerCharacter;
 import org.lab.rm.engine.model.character.Profession;
 import org.lab.rm.engine.model.character.Race;
 import org.lab.rm.engine.model.character.Realm;
+import org.lab.rm.engine.model.character.extension.CharacterAttributes;
 import org.lab.rm.engine.model.player.Player;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -39,18 +40,22 @@ public class PlayerCreationService {
 		pj.setRace(race);
 		pj.setProfession(profession);
 		pj.setRealm(realm);
-		pj.setAttributes(new LinkedHashMap<AttributeType, Attribute>());
+
+		CharacterAttributes attrs = new CharacterAttributes();
+		attrs.setAttributes(new LinkedHashMap<AttributeType, Attribute>());
 		for (AttributeType i : AttributeType.values()) {
 			Attribute a = new Attribute();
 			a.setRacialBonus(race.getAttributes().get(i));
-			pj.getAttributes().put(i, a);
+			attrs.getAttributes().put(i, a);
 		}
-		randomizeAttributes(pj);
+		randomizeAttributes(attrs);
+
+		pj.addModule(attrs);
 		return pj;
 	}
 
-	public void randomizeAttributes(PlayerCharacter pj) {
-		for (Attribute i : pj.getAttributes().values()) {
+	public void randomizeAttributes(CharacterAttributes attrs) {
+		for (Attribute i : attrs.getAttributes().values()) {
 			i.setValue(randomService.rand(20, 100));
 		}
 	}

@@ -1,17 +1,14 @@
-package org.lab.rm.engine.model.character.ext;
+package org.lab.rm.engine.model.character.extension;
 
 import java.math.BigDecimal;
 import java.util.Map;
 
-import org.lab.rm.engine.model.character.CharacterExtension;
 import org.lab.rm.engine.model.character.Gender;
 
 import lombok.Data;
 
 @Data
 public class CharacterCommonData implements CharacterExtension {
-
-	public static final String EXT_COMMON_DATA = "commonData";
 
 	private Gender gender;
 	private Integer age;
@@ -21,6 +18,6 @@ public class CharacterCommonData implements CharacterExtension {
 
 	@Override
 	public String name() {
-		return EXT_COMMON_DATA;
+		return CharacterExtension.COMMON_DATA;
 	}
 }

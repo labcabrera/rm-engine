@@ -1,4 +1,4 @@
-package org.lab.rm.engine.model.character;
+package org.lab.rm.engine.model.character.extension;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -7,7 +7,7 @@ import lombok.Data;
 @Data
 @ApiModel(value = "La capacidad de movimiento de un personaje en un asalto viene dada por su "
 		+ "capacidad de movimiento basica, el ritmo de avance y posiblemente una tirada de maniobra")
-public class CharacterMovementInfo {
+public class CharacterMovementInfo implements CharacterExtension {
 
 	private Double rapidez;
 
@@ -16,5 +16,10 @@ public class CharacterMovementInfo {
 	private Double capacidadDeMovimiento;
 
 	private Double capacidadDeMovimientoBasica;
+
+	@Override
+	public String name() {
+		return CharacterExtension.MOVEMENT;
+	}
 
 }
