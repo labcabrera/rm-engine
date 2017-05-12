@@ -3,17 +3,18 @@ package org.lab.rm.engine.test;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.lab.rm.engine.core.characters.PlayerCreationService;
 import org.lab.rm.engine.core.config.RmEngineCoreConfig;
-import org.lab.rm.engine.model.character.CharacterContext;
 import org.lab.rm.engine.model.character.Gender;
 import org.lab.rm.engine.model.character.Inventory;
 import org.lab.rm.engine.model.character.PlayerCharacter;
 import org.lab.rm.engine.model.character.Profession;
 import org.lab.rm.engine.model.character.Race;
 import org.lab.rm.engine.model.character.extension.CharacterCommonData;
+import org.lab.rm.engine.model.character.extension.CharacterInventory;
 import org.lab.rm.engine.model.character.repository.CharacterContextRepository;
 import org.lab.rm.engine.model.character.repository.PlayerCharacterRepository;
 import org.lab.rm.engine.model.character.repository.ProfessionRepository;
@@ -30,7 +31,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-//@Ignore("mongodb required")
+@Ignore("mongodb required")
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = RmEngineCoreConfig.class)
 public class TestModel {
@@ -62,10 +63,20 @@ public class TestModel {
 		Profession cleric = professionRepository.findByName("CLERIC");
 
 		PlayerCharacter kiove = creationService.prepare(player, "Kiove", commonMan, rogue);
+		WeaponType bastardSword = weaponTypeRepository.findByName("Bastard Sword");
 
 		CharacterCommonData kioveCommonData = new CharacterCommonData();
 		kioveCommonData.setAge(36);
 		kioveCommonData.setGender(Gender.FEMALE);
+		kiove.addModule(kioveCommonData);
+
+		CharacterInventory kioveInventory = new CharacterInventory();
+		kioveInventory.setInventory(new Inventory());
+		kioveInventory.getInventory().setFirstHandEquipedWeapon(new Weapon(bastardSword));
+		kioveInventory.getInventory().setBags(new ArrayList<Item>());
+		kioveInventory.getInventory().getBags().add(new Item("Silver coin", 23));
+		kioveInventory.getInventory().getBags().add(new Item("Copper coin", 33));
+		kioveInventory.getInventory().getBags().add(new Item("Gold coin", 33));
 		kiove.addModule(kioveCommonData);
 
 		playerCharacterRepository.save(kiove);
@@ -79,35 +90,26 @@ public class TestModel {
 
 		playerCharacterRepository.save(otherChars);
 
-		WeaponType bastardSword = weaponTypeRepository.findByName("Bastard Sword");
-		if (bastardSword == null) {
-			bastardSword = new WeaponType();
-			bastardSword.setName("Bastard Sword");
-			bastardSword = weaponTypeRepository.insert(bastardSword);
-		}
+		// if (bastardSword == null) {
+		// bastardSword = new WeaponType();
+		// bastardSword.setName("Bastard Sword");
+		// bastardSword = weaponTypeRepository.insert(bastardSword);
+		// }
 
-		CharacterContext context01 = new CharacterContext();
-		context01.setPj(kiove);
-		context01.setInventory(new Inventory());
-		context01.getInventory().setFirstHandEquipedWeapon(new Weapon(bastardSword));
-		context01.getInventory().setBags(new ArrayList<Item>());
-		context01.getInventory().getBags().add(new Item("Silver coin", 23));
-		context01.getInventory().getBags().add(new Item("Copper coin", 33));
-		context01.getInventory().getBags().add(new Item("Gold coin", 33));
-		characterContextRepository.save(context01);
+		characterContextRepository.save(kioveInventory);
 
-		List<CharacterContext> otherContext = new ArrayList<>();
-		for (PlayerCharacter i : otherChars) {
-			CharacterContext ctx = new CharacterContext(i);
-			characterContextRepository.save(ctx);
-			otherContext.add(ctx);
-		}
+		// List<CharacterInventory> otherContext = new ArrayList<>();
+		// for (PlayerCharacter i : otherChars) {
+		// CharacterInventory ctx = new CharacterInventory(i);
+		// characterContextRepository.save(ctx);
+		// otherContext.add(ctx);
+		// }
 
 		Campaign campaign = new Campaign();
 		campaign.setName("Dummy campaign");
 		campaign.setOwner(player);
-		campaign.setActors(new ArrayList<CharacterContext>());
-		campaign.getActors().addAll(otherContext);
+		campaign.setActors(new ArrayList<CharacterInventory>());
+		// campaign.getActors().addAll(otherContext);
 		campaignRepository.save(campaign);
 	}
 

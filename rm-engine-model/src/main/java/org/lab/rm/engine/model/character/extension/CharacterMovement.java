@@ -7,7 +7,7 @@ import lombok.Data;
 @Data
 @ApiModel(value = "La capacidad de movimiento de un personaje en un asalto viene dada por su "
 		+ "capacidad de movimiento basica, el ritmo de avance y posiblemente una tirada de maniobra")
-public class CharacterMovementInfo implements CharacterExtension {
+public class CharacterMovement implements CharacterExtension {
 
 	private Double rapidez;
 

@@ -2,7 +2,7 @@ package org.lab.rm.engine.model.player;
 
 import java.util.List;
 
-import org.lab.rm.engine.model.character.CharacterContext;
+import org.lab.rm.engine.model.character.extension.CharacterInventory;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Reference;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -22,6 +22,6 @@ public class Campaign {
 	private String name;
 
 	@Reference
-	private List<CharacterContext> actors;
+	private List<CharacterInventory> actors;
 
 }
