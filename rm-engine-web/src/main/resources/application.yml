@@ -1,0 +1,28 @@
+server:
+  tomcat:
+      uri-encoding: UTF-8
+
+management:
+  context-path: /actuator
+  security.enabled: false
+
+app:
+  adfs:
+    issuer: http://ifp.sts.mapfre.net/adfs/services/trust
+    jwt:
+      from: https://pruarq.mapfre.net:9443/saml/metadata
+      to: https://ifp.sts.mapfre.net/adfs/services/trust/13/usernamemixed
+  keystore:
+    file: /opt/x509/pruarq.jks
+    password: changeit
+    keyAlias: pruarq
+    keyPassword: changeit
+    adfsAlias: adfs
+  tomcat:
+    ssl:
+      port: 7443
+      keystore:
+        file: /opt/x509/pruarq.jks
+        password: changeit
+        alias: pruarq
+        

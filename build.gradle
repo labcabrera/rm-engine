@@ -3,6 +3,8 @@ buildscript {
 		springBootVersion = "1.5.2.RELEASE"
 		lombokVersion = "1.16.14"
 		springfoxSwaggerVersion = "2.6.1"
+		bootstrapVersion = "3.3.7"
+  		angularjsVersion = "1.6.4"
 	}
 	repositories {
 		mavenLocal()
@@ -72,9 +74,9 @@ project(":rm-engine-web") {
 	dependencies {
 		compile "org.springframework.boot:spring-boot-starter"
 		compile "org.springframework.boot:spring-boot-starter-web"
+		compile "org.springframework.boot:spring-boot-starter-thymeleaf"
 		compile "org.springframework.boot:spring-boot-starter-actuator"
-	}
-	bootRepackage {
-		enabled = false
+		compile "org.webjars:bootstrap:${bootstrapVersion}"
+		compile "org.webjars:angularjs:${angularjsVersion}"
 	}
 }
