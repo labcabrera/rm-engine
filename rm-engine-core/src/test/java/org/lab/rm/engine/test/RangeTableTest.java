@@ -4,8 +4,8 @@ import java.util.LinkedHashMap;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.lab.rm.engine.core.model.RangeTable;
-import org.lab.rm.engine.core.model.services.RangeTableService;
+import org.lab.rm.engine.model.RangeTable;
+import org.lab.rm.engine.model.services.RangeTableService;
 import org.springframework.util.Assert;
 
 public class RangeTableTest {

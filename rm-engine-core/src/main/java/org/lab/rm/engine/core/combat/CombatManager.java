@@ -1,8 +1,8 @@
 package org.lab.rm.engine.core.combat;
 
-import org.lab.rm.engine.core.model.character.CharacterContext;
-import org.lab.rm.engine.core.model.combat.AttackBonus;
-import org.lab.rm.engine.core.model.combat.DefenseBonus;
+import org.lab.rm.engine.model.character.CharacterContext;
+import org.lab.rm.engine.model.combat.AttackBonus;
+import org.lab.rm.engine.model.combat.DefenseBonus;
 
 public class CombatManager {
 
