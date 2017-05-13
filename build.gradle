@@ -70,6 +70,7 @@ project(":rm-engine-cloud-config") {
 project(":rm-engine-eureka") {
 	dependencies {
 		compile "org.springframework.cloud:spring-cloud-starter-eureka-server:${springCloudEurekaVersion}"
+		compile "org.springframework.cloud:spring-cloud-config-client:${springCloudConfigVersion}"
 	}
 }
 

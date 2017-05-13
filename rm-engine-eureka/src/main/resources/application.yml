@@ -1,9 +1,6 @@
-eureka:
-  instance:
-    hostname: localhost
-  client:
-    registerWithEureka: false
-    fetchRegistry: false
-
-server:
-  port: 9999
+spring:  
+  application:
+    name: rm-engine-eureka
+  cloud:
+    config:
+      uri: http://localhost:8888/
