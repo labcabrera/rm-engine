@@ -13,12 +13,36 @@
 		<div id="navbar" class="navbar-collapse collapse">
 			<ul class="nav navbar-nav">
 				<li><a href="/campaign">Campaign</a></li>
-				<li><a href="/characters">Characters</a></li>
-				<li><a href="/characters">Creation</a></li>
-				<li><a href="/combat">Combat</a></li>
-				<li><a href="/movement">Movement</a></li>
-				<li><a href="/random">Random</a></li>
-				<li><a href="/api">Api</a></li>
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle"
+						data-toggle="dropdown" role="button" aria-haspopup="true"
+						aria-expanded="false">Characters <span class="caret"></span>
+					</a>
+					<ul class="dropdown-menu">
+						<li><a href="/characters">List</a></li>
+						<li><a href="/creation">Creation</a></li>
+					</ul>
+				</li>
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle"
+						data-toggle="dropdown" role="button" aria-haspopup="true"
+						aria-expanded="false">Manouver <span class="caret"></span>
+					</a>
+					<ul class="dropdown-menu">
+						<li><a href="/manouver-dynamic">Dynamic</a></li>
+						<li><a href="/manouver-static">Static</a></li>
+					</ul>
+				</li>
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle"
+						data-toggle="dropdown" role="button" aria-haspopup="true"
+						aria-expanded="false">Utils <span class="caret"></span>
+					</a>
+					<ul class="dropdown-menu">
+						<li><a href="/random">Random</a></li>
+						<li><a href="/api">Api</a></li>
+					</ul>
+				</li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
 				<li><a href="/login">Login</a></li>

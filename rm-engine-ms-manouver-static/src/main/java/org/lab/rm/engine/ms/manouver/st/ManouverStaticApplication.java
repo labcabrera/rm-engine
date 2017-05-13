@@ -1,4 +1,4 @@
-package org.lab.rm.engine.ms.movement;
+package org.lab.rm.engine.ms.manouver.st;
 
 import org.lab.rm.engine.core.config.RmEngineCoreConfig;
 import org.springframework.boot.SpringApplication;
@@ -12,10 +12,10 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableAutoConfiguration
 @EnableSwagger2
 @Import(RmEngineCoreConfig.class)
-public class MovementApplication {
+public class ManouverStaticApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(MovementApplication.class, args);
+		SpringApplication.run(ManouverStaticApplication.class, args);
 	}
 
 }

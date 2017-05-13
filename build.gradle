@@ -78,6 +78,7 @@ project(":rm-engine-web") {
 		compile "org.webjars:bootstrap:${bootstrapVersion}"
 		compile "org.webjars:angularjs:${angularjsVersion}"
 		
+		compile "org.webjars:jquery:3.2.0"
 		compile "org.webjars:angular-ui-select:0.19.6"
 	}
 }
