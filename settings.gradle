@@ -1,6 +1,7 @@
 include ":rm-engine-model"
 include ":rm-engine-core"
 include ":rm-engine-cloud-config"
+include ":rm-engine-eureka"
 include ":rm-engine-ms-common"
 include ":rm-engine-ms-campaign"
 include ":rm-engine-ms-character"
