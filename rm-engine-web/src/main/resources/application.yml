@@ -7,9 +7,10 @@ management:
   context-path: /actuator
   security.enabled: false
   
+#no cache templates under development phase
 spring:
   thymeleaf:
-    cache: false #only for dev
+    cache: false 
 
 zuul:
   routes:
@@ -25,9 +26,12 @@ zuul:
     creation:
       path: /api/creation/**
       url: http://localhost:8093/
-    movement:
-      path: /api/movement/**
-      url: http://localhost:8094/
     combat:
       path: /api/combat/**
       url: http://localhost:8095/
+    maneuver-dynamic:
+      path: /api/movement/**
+      url: http://localhost:8095/
+    maneuver-static:
+      path: /api/movement/**
+      url: http://localhost:8096/
