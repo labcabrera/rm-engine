@@ -14,30 +14,90 @@
 			<h1>Rolemaster movement</h1>
 			<form class="form-horizontal">
 				<div class="form-group">
-					<label class="col-sm-2 control-label">Difficult</label>
-					<a class="btn btn-default col-sm-1" role="button" ng-click="d100Request()">Go</a>
-					<div class="col-sm-9">
-						<input type="text" class="form-control" name="username" ng-model="d100" placeholder="d100" />
+					<label class="col-sm-2 control-label">Maneuver difficulty</label>
+					<div class="col-sm-3">
+						<ui-select ng-model="action.difficulty" theme="bootstrap"
+							ng-disabled="false" reset-search-input="false"> <ui-select-match
+							placeholder="Dificulty">{{$select.selected}}</ui-select-match> <ui-select-choices
+							repeat="difficulty in difficulties track by $index">
+						<div>{{difficulty}}</div>
+						</ui-select-choices> </ui-select>
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="col-sm-2 control-label">d10</label>
-					<a class="btn btn-default col-sm-1" role="button" ng-click="d10Request()">Go</a>
-					<div class="col-sm-9">
-						<input type="text" class="form-control" name="username" ng-model="d10" placeholder="d10" />
+					<label class="col-sm-2 control-label">Skill modifier</label>
+					<div class="col-sm-3">
+						<ui-select ng-model="action.skillModifier" theme="bootstrap"
+							ng-disabled="false" reset-search-input="false"> <ui-select-match
+							placeholder="Dificulty">{{$select.selected}}</ui-select-match> <ui-select-choices
+							repeat="difficulty in difficulties track by $index">
+						<div>{{difficulty}}</div>
+						</ui-select-choices> </ui-select>
+					</div>
+					<div class="col-sm-1">
+						<input type="text" class="form-control" />
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="col-sm-2 control-label">d6</label>
-					<a class="btn btn-default col-sm-1" role="button" ng-click="d6Request()">Go</a>
-					<div class="col-sm-9">
-						<input type="text" class="form-control" name="username" ng-model="d6" placeholder="d6" />
+					<label class="col-sm-2 control-label">Attribute modifier</label>
+					<div class="col-sm-3">
+						<ui-select ng-model="action.attributeModifier" theme="bootstrap"
+							ng-disabled="false" reset-search-input="false"> <ui-select-match
+							placeholder="Dificulty">{{$select.selected}}</ui-select-match> <ui-select-choices
+							repeat="difficulty in difficulties track by $index">
+						<div>{{difficulty}}</div>
+						</ui-select-choices> </ui-select>
+					</div>
+					<div class="col-sm-1">
+						<input type="text" class="form-control" />
 					</div>
 				</div>
 				<div class="form-group">
-					<a class="btn btn-default col-sm-1 col-sm-offset-2" role="button" ng-click="reset()">Reset</a>
+					<label class="col-sm-2 control-label">Hit points modifier</label>
+					<div class="col-sm-3">
+						<ui-select ng-model="action.hpModifier" theme="bootstrap"
+							ng-disabled="false" reset-search-input="false"> <ui-select-match
+							placeholder="Dificulty">{{$select.selected}}</ui-select-match> <ui-select-choices
+							repeat="difficulty in difficulties track by $index">
+						<div>{{difficulty}}</div>
+						</ui-select-choices> </ui-select>
+					</div>
+					<div class="col-sm-1">
+						<input type="text" class="form-control" />
+					</div>
 				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">Armor modifier</label>
+					<div class="col-sm-3">
+						<ui-select ng-model="action.armorModifier" theme="bootstrap"
+							ng-disabled="false" reset-search-input="false"> <ui-select-match
+							placeholder="Dificulty">{{$select.selected}}</ui-select-match> <ui-select-choices
+							repeat="difficulty in difficulties track by $index">
+						<div>{{difficulty}}</div>
+						</ui-select-choices> </ui-select>
+					</div>
+					<div class="col-sm-1">
+						<input type="text" class="form-control" />
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">Custom modifier</label>
+					<div class="col-sm-1 col-sm-offset-3">
+						<input type="text" class="form-control" ng-model="action.customModifier" />
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">Total</label>
+					<div class="col-sm-1 col-sm-offset-3">
+						<input type="text" class="form-control" ng-readonly="true" />
+					</div>
+				</div>
+
+				
+
 			</form>
+			
+			<pre>{{action | json}}</pre>
 		</div>
 	</div>
 
@@ -45,10 +105,22 @@
 <script src="/webjars/angularjs/1.6.4/angular-resource.min.js"></script>
 <script src="/webjars/angularjs/1.6.4/angular-route.min.js"></script>
 <script src="/webjars/angularjs/1.6.4/angular-cookies.min.js"></script>
+<script src="/webjars/angular-ui-select/0.19.6/select.min.js"></script>
 <script>
-var app = angular.module('rolemasterApp', ["ngResource","ngRoute","ngCookies"]);
+var app = angular.module('rolemasterApp', ["ngResource","ngRoute","ngCookies","ui.select"]);
 
-app.controller('mainCtrl', function($scope, $resource, $http, $cookies) {	
+app.controller('mainCtrl', function($scope, $resource, $http, $cookies) {
+	
+	$scope.action = {};
+	
+	$scope.init = function() {
+		$http({method: 'GET', url: "/api/common//enumeration/movementDifficulty"}).then(
+	        function(response) {
+	        	$scope.difficulties = response.data;
+	        });
+	};
+	
+	$scope.init();
 });
 </script>
 </body>

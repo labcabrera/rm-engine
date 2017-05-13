@@ -6,6 +6,10 @@ server:
 management:
   context-path: /actuator
   security.enabled: false
+  
+spring:
+  thymeleaf:
+    cache: false #only for dev
 
 zuul:
   routes:

@@ -77,5 +77,7 @@ project(":rm-engine-web") {
 		compile "org.springframework.cloud:spring-cloud-starter-zuul:${springCloudZuulVersion}"
 		compile "org.webjars:bootstrap:${bootstrapVersion}"
 		compile "org.webjars:angularjs:${angularjsVersion}"
+		
+		compile "org.webjars:angular-ui-select:0.19.6"
 	}
 }
