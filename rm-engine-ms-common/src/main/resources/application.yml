@@ -1,14 +1,6 @@
-server:
-  port: 8090
-
-management:
-  context-path: /actuator
-  security.enabled: false
-
-logging:
-  level.org: INFO
-
-spring:
-  data:
-    mongodb:
-      uri: mongodb://localhost:27017/rmengine
+spring:  
+  application:
+    name: rm-engine-ms-common
+  cloud:
+    config:
+      uri: http://localhost:8888/

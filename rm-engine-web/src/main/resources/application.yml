@@ -1,37 +1,7 @@
-server:
-  port: 8080
-  tomcat:
-      uri-encoding: UTF-8
+spring:  
+  application:
+    name: rm-engine-web
+  cloud:
+    config:
+      uri: http://localhost:8888/
 
-management:
-  context-path: /actuator
-  security.enabled: false
-  
-#no cache templates under development phase
-spring:
-  thymeleaf:
-    cache: false 
-
-zuul:
-  routes:
-    common:
-      path: /api/common/**
-      url: http://localhost:8090/
-    campaign:
-      path: /api/campaign/**
-      url: http://localhost:8091/
-    character:
-      path: /api/character/**
-      url: http://localhost:8092/
-    creation:
-      path: /api/creation/**
-      url: http://localhost:8093/
-    combat:
-      path: /api/combat/**
-      url: http://localhost:8095/
-    maneuver-dynamic:
-      path: /api/movement/**
-      url: http://localhost:8095/
-    maneuver-static:
-      path: /api/movement/**
-      url: http://localhost:8096/

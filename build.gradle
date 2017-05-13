@@ -1,9 +1,10 @@
 buildscript {
 	ext {
 		springBootVersion = "1.5.2.RELEASE"
+		springCloudZuulVersion = "1.2.5.RELEASE"
+		springCloudConfigVersion = "1.3.0.RELEASE"
 		lombokVersion = "1.16.14"
 		springfoxSwaggerVersion = "2.6.1"
-		springCloudZuulVersion = "1.2.5.RELEASE"
 		bootstrapVersion = "3.3.7"
   		angularjsVersion = "1.6.4"
 	}
@@ -58,13 +59,21 @@ project(":rm-engine-core") {
 	}
 }
 
+project(":rm-engine-cloud-config") {
+	dependencies {
+		compile "org.springframework.cloud:spring-cloud-config-server:${springCloudConfigVersion}"
+		compile "org.springframework.boot:spring-boot-starter-web"
+	}
+}
+
 configure(subprojects.findAll {it.name.startsWith("rm-engine-ms")}) {
 	dependencies {
 		compile project(":rm-engine-core")
 		compile "org.springframework.boot:spring-boot-starter"
 		compile "org.springframework.boot:spring-boot-starter-web"
 		compile "org.springframework.boot:spring-boot-starter-actuator"
-		compile("io.springfox:springfox-swagger-ui:${springfoxSwaggerVersion}")		
+		compile "io.springfox:springfox-swagger-ui:${springfoxSwaggerVersion}"
+		compile "org.springframework.cloud:spring-cloud-config-client:${springCloudConfigVersion}"
 	}
 }
 
@@ -75,6 +84,7 @@ project(":rm-engine-web") {
 		compile "org.springframework.boot:spring-boot-starter-thymeleaf"
 		compile "org.springframework.boot:spring-boot-starter-actuator"
 		compile "org.springframework.cloud:spring-cloud-starter-zuul:${springCloudZuulVersion}"
+		compile "org.springframework.cloud:spring-cloud-config-client:${springCloudConfigVersion}"
 		compile "org.webjars:bootstrap:${bootstrapVersion}"
 		compile "org.webjars:angularjs:${angularjsVersion}"
 		
