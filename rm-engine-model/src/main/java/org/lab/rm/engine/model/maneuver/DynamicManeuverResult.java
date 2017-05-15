@@ -1,4 +1,4 @@
-package org.lab.rm.engine.model.movement;
+package org.lab.rm.engine.model.maneuver;
 
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -7,7 +7,7 @@ import lombok.Data;
 
 @Document(collection = "tableMovementManeuverEntry")
 @Data
-public class MovementManeuverResult {
+public class DynamicManeuverResult {
 
 	private String id;
 

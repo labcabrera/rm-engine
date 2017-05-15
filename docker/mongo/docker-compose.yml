@@ -1,0 +1,13 @@
+version: "3.0"
+services:
+
+  mongodb:
+    image: mongo:2.6.11
+    container_name: mongodb
+    ports:
+      - "27017:27017"
+    volumes:
+      - ../../resources:/resources
+    expose:
+      - "27017"
+    command: bash -c " set -o monitor ; mongod --smallfiles & sleep 20; mongo localhost:27017/rmengine /resources/mongo-init-data.js; fg"

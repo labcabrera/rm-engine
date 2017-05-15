@@ -1,4 +1,4 @@
-package org.lab.rm.engine.model.movement;
+package org.lab.rm.engine.model.maneuver;
 
 public enum ManeuverDifficulty {
 

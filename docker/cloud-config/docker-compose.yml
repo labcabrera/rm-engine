@@ -1,0 +1,17 @@
+version: "3.0"
+services:
+
+  cloud-config:
+    image: java:openjdk-8u45-jdk
+    working_dir: /app
+    volumes:
+      - ../../rm-engine-cloud-config/build/libs:/app
+    ports:
+      - "8888:8888"
+    command: java -jar /app/rm-engine-cloud-config-0.0.2-SNAPSHOT.jar
+    networks:
+      - rmengine-network
+
+networks:
+  rmengine-network:
+    external: true

@@ -1,0 +1,21 @@
+version: "2"
+services:
+
+  eureka:
+    image: java:openjdk-8u45-jdk
+    working_dir: /app
+    volumes:
+      - ../../rm-engine-eureka/build/libs:/app
+    ports:
+      - "8070:8070"
+    #links:
+    #  - cloud-config
+    #workaround: wait 20 seconds until cloud-config is up
+    #command: bash -c "sleep 20; java -jar /app/rm-engine-eureka-0.0.2-SNAPSHOT.jar"
+    command: java -jar /app/rm-engine-eureka-0.0.2-SNAPSHOT.jar
+    networks:
+      - rmengine-network
+
+networks:
+  rmengine-network:
+    external: true

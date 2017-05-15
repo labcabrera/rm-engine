@@ -1,6 +1,6 @@
 package org.lab.rm.engine.ms.common.controller;
 
-import org.lab.rm.engine.model.movement.ManeuverDifficulty;
+import org.lab.rm.engine.model.maneuver.ManeuverDifficulty;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;

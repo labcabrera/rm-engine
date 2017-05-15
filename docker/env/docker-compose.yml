@@ -1,11 +1,35 @@
-mongodb:
-  image: mongo:2.6.11
-  container_name: mongodb
-  ports:
-    - "27017:27017"
-  volumes:
-    - ../../resources:/resources
-  expose:
-    - "27017"
-# command: bash -c " set -o monitor ; curl -o initData.js https://raw.githubusercontent.com/labcabrera/lemur/master/resources/initData.js; mongod --smallfiles & sleep 5; mongo localhost:27017/lemur initData.js; fg"
-  command: bash -c " set -o monitor ; mongod --smallfiles & sleep 20; mongo localhost:27017/rmengine /resources/mongo-init-data.js; fg"
+version: "3.0"
+services:
+
+  mongodb:
+    image: mongo:2.6.11
+    container_name: mongodb
+    ports:
+      - "27017:27017"
+    volumes:
+      - ../../resources:/resources
+    expose:
+      - "27017"
+    command: bash -c " set -o monitor ; mongod --smallfiles & sleep 20; mongo localhost:27017/rmengine /resources/mongo-init-data.js; fg"
+
+  cloud-config:
+    image: java:openjdk-8u45-jdk
+    working_dir: /app
+    volumes:
+      - ../../rm-engine-cloud-config/build/libs:/app
+    ports:
+      - "8888:8888"
+    command: java -jar /app/rm-engine-cloud-config-0.0.2-SNAPSHOT.jar
+
+
+  eureka:
+    image: java:openjdk-8u45-jdk
+    working_dir: /app
+    volumes:
+      - ../../rm-engine-eureka/build/libs:/app
+    ports:
+      - "8070:8070"
+    links:
+      - cloud-config
+    #workaround: wait 20 seconds until cloud-config is up
+    command: bash -c "sleep 20; java -jar /app/rm-engine-eureka-0.0.2-SNAPSHOT.jar"
