@@ -1,9 +1,9 @@
 buildscript {
 	ext {
-		springBootVersion = "1.5.3.RELEASE"
+		springBootVersion = "1.5.4.RELEASE"
 		springCloudVersion = "Camden.SR7"
 		lombokVersion = "1.16.14"
-		springfoxSwaggerVersion = "2.6.1"
+		springfoxSwaggerVersion = "2.7.0"
 		bootstrapVersion = "3.3.7"
   		angularjsVersion = "1.6.4"
 	}
@@ -17,7 +17,7 @@ buildscript {
 }
 
 subprojects {
-    apply plugin: "java"
+  apply plugin: "java"
 	apply plugin: "org.springframework.boot"
 	apply plugin: "eclipse"
 	apply plugin: "idea"
@@ -40,7 +40,7 @@ subprojects {
 			mavenBom "org.springframework.cloud:spring-cloud-starter-parent:${springCloudVersion}"
 		}
 	}
-	
+
     dependencies {
     	compile "org.projectlombok:lombok:${lombokVersion}"
     	testCompile "org.springframework.boot:spring-boot-starter-test"
